@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="UsersDataClasses">
+  <DataContextMoniker Name="/UsersDataClassesDataContext" />
+  <nestedChildShapes>
+    <classShape Id="0b2345df-6974-45ca-89b4-27e8bda1b08e" absoluteBounds="4.375, 1.625, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/UsersDataClassesDataContext/Users" />
+      <nestedChildShapes>
+        <elementListCompartment Id="335ad819-db64-478d-8682-95d9f5aabfb4" absoluteBounds="4.39, 2.085, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

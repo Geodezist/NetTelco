@@ -1,0 +1,52 @@
+﻿<%@ Master Language="C#" 
+    AutoEventWireup="true" 
+    CodeBehind="MainRoot.master.cs" 
+    Inherits="NetTelco.MainRoot" 
+    EnableTheming="true"%>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <table width=100%>
+        <tr>
+            <td colspan="2">
+                Заголовок - Сервер -
+                    <asp:LoginView ID="UserLoginView" runat="server">
+                        <AnonymousTemplate>
+                            Гость. Пожалуйста войдите в систему.
+                        </AnonymousTemplate>
+                        <LoggedInTemplate>
+                            <asp:LoginName ID="UserLoginName" runat="server"/>
+                        </LoggedInTemplate>
+                    </asp:LoginView>
+                
+            </td>
+        </tr>
+        <tr>
+            <td width="100px">
+                <br />
+                <a href="Users.aspx">Работас&nbspSQL&nbspData&nbspSource</a><br />
+                <a href="UsersODS.aspx">Работа с LINQ to SQL и Object Data Source</a><br />
+            </td>
+            <td>
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <strong>Подвал - Название системы</strong>
+            </td>
+        </tr>
+    </table>
+    <div>
+    </div>
+    </form>
+</body>
+</html>
