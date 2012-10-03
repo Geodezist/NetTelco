@@ -19,6 +19,7 @@
                 <asp:BoundField DataField="MIDDLE_NAME" HeaderText="MIDDLE_NAME" 
                     SortExpression="MIDDLE_NAME" />
                 <asp:BoundField DataField="LOGIN" HeaderText="LOGIN" SortExpression="LOGIN" />
+                <asp:BoundField DataField="PASSWORD" HeaderText="PASSWORD" SortExpression="PASSWORD" />
             </Columns>
         </asp:GridView>
     

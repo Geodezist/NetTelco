@@ -53,9 +53,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Themes\Default\DefaultStyle.css" />
+    <Content Include="Auth\Auth.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="UsersODS.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -64,6 +67,19 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auth\Auth.aspx.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Auth\Auth.aspx.designer.cs">
+      <DependentUpon>Auth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\AuthDataClasses.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AuthDataClasses.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Auth\AuthLogic.cs" />
     <Compile Include="BIZ\BizUserLogic.cs" />
     <Compile Include="MainRoot.Master.cs">
       <DependentUpon>MainRoot.Master</DependentUpon>
@@ -102,6 +118,14 @@
   <ItemGroup>
     <Content Include="App_Themes\Default\CancelButtonSkin.skin" />
     <Content Include="App_Themes\Minimal\MinimalSkin.skin" />
+    <None Include="Auth\AuthDataClasses.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>AuthDataClasses.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Auth\AuthDataClasses.dbml.layout">
+      <DependentUpon>AuthDataClasses.dbml</DependentUpon>
+    </None>
     <None Include="UsersDataClasses.dbml">
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>UsersDataClasses.designer.cs</LastGenOutput>

@@ -23,6 +23,19 @@
                     <asp:TextBox ID="NewLOGINTextBox" runat="server" />
                 </FooterTemplate>
             </asp:TemplateField>
+
+            <asp:TemplateField HeaderText="Пароль" SortExpression="PASSWORD">
+                <ItemTemplate>
+                    <%#Eval("PASSWORD")%>
+                </ItemTemplate>
+                <EditItemTemplate>
+                    <asp:TextBox ID="UpdatePASSWORDTextBox" runat="server" Text='<%#Eval("PASSWORD")%>' />
+                </EditItemTemplate>
+                <FooterTemplate>
+                    <asp:TextBox ID="NewPASSWORDTextBox" runat="server" />
+                </FooterTemplate>
+            </asp:TemplateField>
+
             <asp:TemplateField HeaderText="Фамилия" SortExpression="LAST_NAME">
                 <ItemTemplate>
                     <%#Eval("LAST_NAME")%>

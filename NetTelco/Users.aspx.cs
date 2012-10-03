@@ -68,11 +68,12 @@ namespace NetTelco
         {
             if (a.CommandName.Equals("Insert"))
             {
-                UsersDBSource.InsertCommand = "INSERT INTO Users (FIRST_NAME,LAST_NAME,MIDDLE_NAME,LOGIN) VALUES ('"
+                UsersDBSource.InsertCommand = "INSERT INTO Users (FIRST_NAME,LAST_NAME,MIDDLE_NAME,LOGIN,PASSWORD) VALUES ('"
                     + (UserGrid.FooterRow.FindControl("NewFIRST_NAMETextBox") as TextBox).Text.ToString() + "', '"
                     + (UserGrid.FooterRow.FindControl("NewLAST_NAMETextBox") as TextBox).Text.ToString() + "', '"
                     + (UserGrid.FooterRow.FindControl("NewMIDDLE_NAMETextBox") as TextBox).Text.ToString() + "', '"
-                    + (UserGrid.FooterRow.FindControl("NewLOGINTextBox") as TextBox).Text.ToString() + "')";
+                    + (UserGrid.FooterRow.FindControl("NewLOGINTextBox") as TextBox).Text.ToString() + "', '"
+                    + (UserGrid.FooterRow.FindControl("NewPASSWORDTextBox") as TextBox).Text.ToString() + "')";
                 UsersDBSource.Insert();
 
                 Label1.Text = UsersDBSource.InsertCommand.ToString();
@@ -104,11 +105,12 @@ namespace NetTelco
             GridViewRow row = UserGrid.Rows[a.RowIndex];
 
             // Формируем строку update-а
-            string updateString = String.Format("UPDATE Users SET FIRST_NAME='{0}', LAST_NAME='{1}', MIDDLE_NAME='{2}', LOGIN='{3}' WHERE ID={4}",
+            string updateString = String.Format("UPDATE Users SET FIRST_NAME='{0}', LAST_NAME='{1}', MIDDLE_NAME='{2}', LOGIN='{3}', PASSWORD='{4}' WHERE ID={5}",
                                             (row.FindControl("UpdateFIRST_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateLAST_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateMIDDLE_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateLoginTextBox") as TextBox).Text.ToString(),
+                                            (row.FindControl("UpdatePASSWORDTextBox") as TextBox).Text.ToString(),
                                             ID);
             
             using (SqlConnection conn = new SqlConnection(connString))

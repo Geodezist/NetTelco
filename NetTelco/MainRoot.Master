@@ -31,8 +31,8 @@
         <tr>
             <td width="100px">
                 <br />
-                <a href="Users.aspx">Работас&nbspSQL&nbspData&nbspSource</a><br />
-                <a href="UsersODS.aspx">Работа с LINQ to SQL и Object Data Source</a><br />
+                <a href="~/Users.aspx" runat="server">Работас&nbspSQL&nbspData&nbspSource</a><br />
+                <a href="~/UsersODS.aspx" runat="server">Работа с LINQ to SQL и Object Data Source</a><br />
             </td>
             <td>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

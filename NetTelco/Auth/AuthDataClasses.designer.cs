@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NetTelco
+namespace NetTelco.Auth
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -23,7 +23,7 @@ namespace NetTelco
 	
 	
 	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="SecurityDB")]
-	public partial class UsersDataClassesDataContext : System.Data.Linq.DataContext
+	public partial class AuthDataClassesDataContext : System.Data.Linq.DataContext
 	{
 		
 		private static System.Data.Linq.Mapping.MappingSource mappingSource = new AttributeMappingSource();
@@ -35,31 +35,31 @@ namespace NetTelco
     partial void DeleteUsers(Users instance);
     #endregion
 		
-		public UsersDataClassesDataContext() : 
+		public AuthDataClassesDataContext() : 
 				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["SecurityDB"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public UsersDataClassesDataContext(string connection) : 
+		public AuthDataClassesDataContext(string connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public UsersDataClassesDataContext(System.Data.IDbConnection connection) : 
+		public AuthDataClassesDataContext(System.Data.IDbConnection connection) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public UsersDataClassesDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public AuthDataClassesDataContext(string connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
 		}
 		
-		public UsersDataClassesDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
+		public AuthDataClassesDataContext(System.Data.IDbConnection connection, System.Data.Linq.Mapping.MappingSource mappingSource) : 
 				base(connection, mappingSource)
 		{
 			OnCreated();
