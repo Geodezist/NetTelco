@@ -52,6 +52,10 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SecurityDB_local.mdf" />
+    <Content Include="App_Data\SecurityDB_local_log.LDF">
+      <DependentUpon>SecurityDB_local.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Themes\Default\DefaultStyle.css" />
     <Content Include="Auth\Auth.aspx" />
     <Content Include="Users.aspx" />
@@ -135,6 +139,7 @@
       <DependentUpon>UsersDataClasses.dbml</DependentUpon>
     </None>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>
