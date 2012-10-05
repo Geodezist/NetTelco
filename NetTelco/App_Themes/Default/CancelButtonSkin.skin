@@ -14,7 +14,7 @@
 
 
 <asp:Button SkinID= "CancelButtonSkin" runat="server"
- BackColor="#FF5050"
+ BackColor="#00FF00"
  BorderColor="Maroon" 
  BorderStyle="Solid"
  BorderWidth="1px"

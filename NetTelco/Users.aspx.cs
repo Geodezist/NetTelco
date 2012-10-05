@@ -101,17 +101,17 @@ namespace NetTelco
 
         protected void userGrid_RowUpdating(object sender, GridViewUpdateEventArgs a)
         {
-            string ID = UserGrid.DataKeys[a.RowIndex].Value.ToString();
+            string USER_ID = UserGrid.DataKeys[a.RowIndex].Value.ToString();
             GridViewRow row = UserGrid.Rows[a.RowIndex];
 
             // Формируем строку update-а
-            string updateString = String.Format("UPDATE Users SET FIRST_NAME='{0}', LAST_NAME='{1}', MIDDLE_NAME='{2}', LOGIN='{3}', PASSWORD='{4}' WHERE ID={5}",
+            string updateString = String.Format("UPDATE Users SET FIRST_NAME='{0}', LAST_NAME='{1}', MIDDLE_NAME='{2}', LOGIN='{3}', PASSWORD='{4}' WHERE USER_ID={5}",
                                             (row.FindControl("UpdateFIRST_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateLAST_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateMIDDLE_NAMETextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdateLoginTextBox") as TextBox).Text.ToString(),
                                             (row.FindControl("UpdatePASSWORDTextBox") as TextBox).Text.ToString(),
-                                            ID);
+                                            USER_ID);
             
             using (SqlConnection conn = new SqlConnection(connString))
             {
@@ -128,14 +128,14 @@ namespace NetTelco
 
         protected void userGrid_RowDeleting(object sender, GridViewDeleteEventArgs a)
         {
-            string ID = UserGrid.DataKeys[a.RowIndex].Value.ToString();
+            string USER_ID = UserGrid.DataKeys[a.RowIndex].Value.ToString();
 
             // Формируем строку delete-а
 
             using (SqlConnection conn = new SqlConnection(connString))
             {
                 conn.Open();
-                using (SqlCommand cmd = new SqlCommand("DELETE FROM Users WHERE ID="+ID, conn))
+                using (SqlCommand cmd = new SqlCommand("DELETE FROM Users WHERE USER_ID="+USER_ID, conn))
                 {
                     cmd.ExecuteNonQuery();
                 }

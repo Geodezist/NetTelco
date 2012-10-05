@@ -7,7 +7,7 @@
 // </автоматически создаваемое>
 //------------------------------------------------------------------------------
 
-namespace NetTelco.Auth {
+namespace NetTelco.NetTelcoAuth {
     
     
     public partial class WebForm1 {

@@ -7,7 +7,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:GridView ID="UserGrid" runat="server" AllowSorting="True" AutoGenerateColumns="False"
-        DataKeyNames="ID" CellPadding="4" ForeColor="#333333" OnRowCommand="userGrid_RowCommand"
+        DataKeyNames="USER_ID" CellPadding="4" ForeColor="#333333" OnRowCommand="userGrid_RowCommand"
         OnRowEditing="userGrid_RowEditing" OnRowUpdating="userGrid_RowUpdating" OnRowCancelingEdit="userGrid_RowCancelingEdit"
         OnRowDeleting="userGrid_RowDeleting">
         <AlternatingRowStyle BackColor="Red" />
@@ -88,16 +88,16 @@
     </asp:GridView>
     <asp:SqlDataSource ID="UsersDBSource" runat="server" ConflictDetection="OverwriteChanges"
         ConnectionString="<%$ ConnectionStrings:SecurityDB %>" SelectCommand="SELECT * FROM [Users]"
-        DeleteCommand="DELETE FROM [Users] WHERE [ID]=@ID" UpdateCommand="">
+        DeleteCommand="DELETE FROM [Users] WHERE [USER_ID]=@USER_ID" UpdateCommand="">
         <DeleteParameters>
-            <asp:Parameter Name="ID" Type="Int64" />
+            <asp:Parameter Name="USER_ID" Type="Int64" />
         </DeleteParameters>
         <UpdateParameters>
             <asp:Parameter Name="FIRST_NAME" Type="String" />
             <asp:Parameter Name="LAST_NAME" Type="String" />
             <asp:Parameter Name="MIDDLE_NAME" Type="String" />
             <asp:Parameter Name="LOGIN" Type="String" />
-            <asp:Parameter Name="ID" Type="Int64" />
+            <asp:Parameter Name="USER_ID" Type="Int64" />
         </UpdateParameters>
     </asp:SqlDataSource>
     <br />

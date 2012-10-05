@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace NetTelco.Auth
+namespace NetTelco.NetTelcoAuth
 {
     public partial class WebForm1 : System.Web.UI.Page
     {
