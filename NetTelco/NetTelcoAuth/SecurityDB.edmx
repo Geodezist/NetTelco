@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SecurityDB.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="SecurityDB.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SecurityDBModelsStoreContainer">
           <EntitySet Name="Users" EntityType="SecurityDB.Models.Store.Users" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
@@ -15,22 +15,21 @@
           <Property Name="USER_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="FIRST_NAME" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="LAST_NAME" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="MIDDLE_NAME" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="MIDDLE_NAME" Type="nvarchar" MaxLength="100" />
           <Property Name="LOGIN" Type="nvarchar" Nullable="false" MaxLength="32" />
           <Property Name="PASSWORD" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="PASSWORD_SALT" Type="nvarchar" Nullable="false" MaxLength="128" />
           <Property Name="EMAIL" Type="nvarchar" MaxLength="100" />
-          <Property Name="CREATE_DATE" Type="datetime" Nullable="false" />
-          <Property Name="LAST_MODIFIED_DATE" Type="datetime" Nullable="false" />
-          <Property Name="LAST_LOGIN_DATE" Type="datetime" Nullable="false" />
+          <Property Name="CREATE_DATE" Type="datetime2" Nullable="false" />
+          <Property Name="LAST_MODIFIED_DATE" Type="datetime2" Nullable="false" />
+          <Property Name="LAST_LOGIN_DATE" Type="datetime2" Nullable="false" />
           <Property Name="LAST_LOGIN_IP" Type="nvarchar" MaxLength="100" />
           <Property Name="IS_ACTIVATED" Type="bit" Nullable="false" />
           <Property Name="IS_LOCKED_OUT" Type="bit" Nullable="false" />
-          <Property Name="LAST_LOCKED_OUT_DATE" Type="datetime" Nullable="false" />
+          <Property Name="LAST_LOCKED_OUT_DATE" Type="datetime2" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_REASON" Type="nvarchar" MaxLength="500" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SecurityDB.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -44,7 +43,7 @@
           <Property Name="USER_ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="FIRST_NAME" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="LAST_NAME" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
-          <Property Name="MIDDLE_NAME" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="MIDDLE_NAME" Type="String" Nullable="true" MaxLength="100" Unicode="true" FixedLength="false" />
           <Property Name="LOGIN" Type="String" Nullable="false" MaxLength="32" Unicode="true" FixedLength="false" />
           <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
           <Property Name="PASSWORD_SALT" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />

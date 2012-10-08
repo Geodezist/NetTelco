@@ -116,7 +116,6 @@ namespace NetTelco.NetTelcoAuth
         /// <param name="uSER_ID">Исходное значение свойства USER_ID.</param>
         /// <param name="fIRST_NAME">Исходное значение свойства FIRST_NAME.</param>
         /// <param name="lAST_NAME">Исходное значение свойства LAST_NAME.</param>
-        /// <param name="mIDDLE_NAME">Исходное значение свойства MIDDLE_NAME.</param>
         /// <param name="lOGIN">Исходное значение свойства LOGIN.</param>
         /// <param name="pASSWORD">Исходное значение свойства PASSWORD.</param>
         /// <param name="pASSWORD_SALT">Исходное значение свойства PASSWORD_SALT.</param>
@@ -126,13 +125,12 @@ namespace NetTelco.NetTelcoAuth
         /// <param name="iS_ACTIVATED">Исходное значение свойства IS_ACTIVATED.</param>
         /// <param name="iS_LOCKED_OUT">Исходное значение свойства IS_LOCKED_OUT.</param>
         /// <param name="lAST_LOCKED_OUT_DATE">Исходное значение свойства LAST_LOCKED_OUT_DATE.</param>
-        public static Users CreateUsers(global::System.Int64 uSER_ID, global::System.String fIRST_NAME, global::System.String lAST_NAME, global::System.String mIDDLE_NAME, global::System.String lOGIN, global::System.String pASSWORD, global::System.String pASSWORD_SALT, global::System.DateTime cREATE_DATE, global::System.DateTime lAST_MODIFIED_DATE, global::System.DateTime lAST_LOGIN_DATE, global::System.Boolean iS_ACTIVATED, global::System.Boolean iS_LOCKED_OUT, global::System.DateTime lAST_LOCKED_OUT_DATE)
+        public static Users CreateUsers(global::System.Int64 uSER_ID, global::System.String fIRST_NAME, global::System.String lAST_NAME, global::System.String lOGIN, global::System.String pASSWORD, global::System.String pASSWORD_SALT, global::System.DateTime cREATE_DATE, global::System.DateTime lAST_MODIFIED_DATE, global::System.DateTime lAST_LOGIN_DATE, global::System.Boolean iS_ACTIVATED, global::System.Boolean iS_LOCKED_OUT, global::System.DateTime lAST_LOCKED_OUT_DATE)
         {
             Users users = new Users();
             users.USER_ID = uSER_ID;
             users.FIRST_NAME = fIRST_NAME;
             users.LAST_NAME = lAST_NAME;
-            users.MIDDLE_NAME = mIDDLE_NAME;
             users.LOGIN = lOGIN;
             users.PASSWORD = pASSWORD;
             users.PASSWORD_SALT = pASSWORD_SALT;
@@ -226,7 +224,7 @@ namespace NetTelco.NetTelcoAuth
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
         [DataMemberAttribute()]
         public global::System.String MIDDLE_NAME
         {
@@ -238,7 +236,7 @@ namespace NetTelco.NetTelcoAuth
             {
                 OnMIDDLE_NAMEChanging(value);
                 ReportPropertyChanging("MIDDLE_NAME");
-                _MIDDLE_NAME = StructuralObject.SetValidValue(value, false);
+                _MIDDLE_NAME = StructuralObject.SetValidValue(value, true);
                 ReportPropertyChanged("MIDDLE_NAME");
                 OnMIDDLE_NAMEChanged();
             }

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NetTelco.NetTelcoAuth.Login" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="NetTelco.NetTelcoAuth.AuthCheck" %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 
@@ -20,6 +20,11 @@
             <TitleTextStyle BackColor="#507CD1" Font-Bold="True" Font-Size="0.9em" 
                 ForeColor="White" />
         </asp:Login>
+    
+        <br />
+        <br />
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
     
     </div>
     </form>

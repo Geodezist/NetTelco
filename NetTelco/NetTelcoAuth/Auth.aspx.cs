@@ -16,8 +16,8 @@ namespace NetTelco.NetTelcoAuth
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            
-            Boolean GetAuth = (new AuthLogic()).CheckAuth(LoginTextBox.Text, PasswordTextBox.Text);
+
+            bool GetAuth = (new NetTelcoUserRepository()).ValidateUser(LoginTextBox.Text, PasswordTextBox.Text);
 
             if (GetAuth)
             { 

@@ -11,12 +11,14 @@ namespace NetTelco.NetTelcoAuth
     public class NetTelcoUserRepository
     {
 
-        public MembershipUser CreateUser(string username, string password, string email)
+        public MembershipUser CreateUser(string first_name, string last_name, string username, string password, string email)
         {
             using (SecurityDBEntities db = new SecurityDBEntities())
             {
                 Users user = new Users();
                 user.LOGIN = username;
+                user.FIRST_NAME = first_name;
+                user.LAST_NAME = last_name;
                 user.EMAIL = email;
                 user.PASSWORD_SALT = CreateSalt();
                 user.PASSWORD = CreatePasswordHash(password,user.PASSWORD_SALT);
@@ -32,6 +34,7 @@ namespace NetTelco.NetTelcoAuth
                 return GetUser(username);
             }
         }
+
 
         public string GetUserNameByEmail(string email)
         {

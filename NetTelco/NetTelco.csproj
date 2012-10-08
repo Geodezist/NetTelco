@@ -60,7 +60,9 @@
       <DependentUpon>SecurityDB_local.mdf</DependentUpon>
     </Content>
     <Content Include="App_Themes\Default\DefaultStyle.css" />
+    <Content Include="NetTelcoAuth\AccessAdmin.aspx" />
     <Content Include="NetTelcoAuth\Auth.aspx" />
+    <Content Include="NetTelcoAuth\AuthCheck.aspx" />
     <Content Include="NetTelcoAuth\Login.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="UsersODS.aspx" />
@@ -75,6 +77,13 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NetTelcoAuth\AccessAdmin.aspx.cs">
+      <DependentUpon>AccessAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NetTelcoAuth\AccessAdmin.aspx.designer.cs">
+      <DependentUpon>AccessAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="NetTelcoAuth\Auth.aspx.cs">
       <DependentUpon>Auth.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -82,7 +91,13 @@
     <Compile Include="NetTelcoAuth\Auth.aspx.designer.cs">
       <DependentUpon>Auth.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NetTelcoAuth\AuthLogic.cs" />
+    <Compile Include="NetTelcoAuth\AuthCheck.aspx.cs">
+      <DependentUpon>AuthCheck.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NetTelcoAuth\AuthCheck.aspx.designer.cs">
+      <DependentUpon>AuthCheck.aspx</DependentUpon>
+    </Compile>
     <Compile Include="BIZ\BizUserLogic.cs" />
     <Compile Include="MainRoot.Master.cs">
       <DependentUpon>MainRoot.Master</DependentUpon>
@@ -98,7 +113,7 @@
     <Compile Include="NetTelcoAuth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NetTelcoAuth\NetTelcoMembershipProvicer.cs" />
+    <Compile Include="NetTelcoAuth\NetTelcoMembershipProvider.cs" />
     <Compile Include="NetTelcoAuth\NetTelcoUserRepository.cs" />
     <Compile Include="NetTelcoAuth\SecurityDB.Designer.cs">
       <AutoGen>True</AutoGen>

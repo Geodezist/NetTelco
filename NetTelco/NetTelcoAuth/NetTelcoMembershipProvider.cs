@@ -7,7 +7,7 @@ using System.Collections.Specialized;
 
 namespace NetTelco.NetTelcoAuth
 {
-    public class NetTelcoMembershipProvicer : MembershipProvider
+    public class NetTelcoMembershipProvider : MembershipProvider
     {
 
         ////  Хелпер для получения значений из конфигурационного файла.
@@ -102,7 +102,7 @@ namespace NetTelco.NetTelcoAuth
             if (u == null)
             {
                 NetTelcoUserRepository _user = new NetTelcoUserRepository();
-                _user.CreateUser(username, password, email);
+                _user.CreateUser(null, null, username, password, email);
                 status = MembershipCreateStatus.Success;
 
                 return GetUser(username, false);
