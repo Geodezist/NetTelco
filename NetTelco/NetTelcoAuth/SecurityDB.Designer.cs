@@ -80,6 +80,70 @@ namespace NetTelco.NetTelcoAuth
             }
         }
         private ObjectSet<Users> _Users;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<AccessGroups> AccessGroups
+        {
+            get
+            {
+                if ((_AccessGroups == null))
+                {
+                    _AccessGroups = base.CreateObjectSet<AccessGroups>("AccessGroups");
+                }
+                return _AccessGroups;
+            }
+        }
+        private ObjectSet<AccessGroups> _AccessGroups;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<AccessPages> AccessPages
+        {
+            get
+            {
+                if ((_AccessPages == null))
+                {
+                    _AccessPages = base.CreateObjectSet<AccessPages>("AccessPages");
+                }
+                return _AccessPages;
+            }
+        }
+        private ObjectSet<AccessPages> _AccessPages;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<AccessPagesInAccessGroups> AccessPagesInAccessGroups
+        {
+            get
+            {
+                if ((_AccessPagesInAccessGroups == null))
+                {
+                    _AccessPagesInAccessGroups = base.CreateObjectSet<AccessPagesInAccessGroups>("AccessPagesInAccessGroups");
+                }
+                return _AccessPagesInAccessGroups;
+            }
+        }
+        private ObjectSet<AccessPagesInAccessGroups> _AccessPagesInAccessGroups;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<UsersInAccessGroups> UsersInAccessGroups
+        {
+            get
+            {
+                if ((_UsersInAccessGroups == null))
+                {
+                    _UsersInAccessGroups = base.CreateObjectSet<UsersInAccessGroups>("UsersInAccessGroups");
+                }
+                return _UsersInAccessGroups;
+            }
+        }
+        private ObjectSet<UsersInAccessGroups> _UsersInAccessGroups;
 
         #endregion
         #region Методы AddTo
@@ -91,6 +155,38 @@ namespace NetTelco.NetTelcoAuth
         {
             base.AddObject("Users", users);
         }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet AccessGroups. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToAccessGroups(AccessGroups accessGroups)
+        {
+            base.AddObject("AccessGroups", accessGroups);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet AccessPages. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToAccessPages(AccessPages accessPages)
+        {
+            base.AddObject("AccessPages", accessPages);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet AccessPagesInAccessGroups. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToAccessPagesInAccessGroups(AccessPagesInAccessGroups accessPagesInAccessGroups)
+        {
+            base.AddObject("AccessPagesInAccessGroups", accessPagesInAccessGroups);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet UsersInAccessGroups. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToUsersInAccessGroups(UsersInAccessGroups usersInAccessGroups)
+        {
+            base.AddObject("UsersInAccessGroups", usersInAccessGroups);
+        }
 
         #endregion
     }
@@ -99,6 +195,321 @@ namespace NetTelco.NetTelcoAuth
     #endregion
     
     #region Сущности
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SecurityDB.Models", Name="AccessGroups")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AccessGroups : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта AccessGroups.
+        /// </summary>
+        /// <param name="aCCESSGROUP_ID">Исходное значение свойства ACCESSGROUP_ID.</param>
+        /// <param name="nAME">Исходное значение свойства NAME.</param>
+        /// <param name="lABEL">Исходное значение свойства LABEL.</param>
+        public static AccessGroups CreateAccessGroups(global::System.Int64 aCCESSGROUP_ID, global::System.String nAME, global::System.String lABEL)
+        {
+            AccessGroups accessGroups = new AccessGroups();
+            accessGroups.ACCESSGROUP_ID = aCCESSGROUP_ID;
+            accessGroups.NAME = nAME;
+            accessGroups.LABEL = lABEL;
+            return accessGroups;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 ACCESSGROUP_ID
+        {
+            get
+            {
+                return _ACCESSGROUP_ID;
+            }
+            set
+            {
+                if (_ACCESSGROUP_ID != value)
+                {
+                    OnACCESSGROUP_IDChanging(value);
+                    ReportPropertyChanging("ACCESSGROUP_ID");
+                    _ACCESSGROUP_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ACCESSGROUP_ID");
+                    OnACCESSGROUP_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _ACCESSGROUP_ID;
+        partial void OnACCESSGROUP_IDChanging(global::System.Int64 value);
+        partial void OnACCESSGROUP_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NAME
+        {
+            get
+            {
+                return _NAME;
+            }
+            set
+            {
+                OnNAMEChanging(value);
+                ReportPropertyChanging("NAME");
+                _NAME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NAME");
+                OnNAMEChanged();
+            }
+        }
+        private global::System.String _NAME;
+        partial void OnNAMEChanging(global::System.String value);
+        partial void OnNAMEChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String LABEL
+        {
+            get
+            {
+                return _LABEL;
+            }
+            set
+            {
+                OnLABELChanging(value);
+                ReportPropertyChanging("LABEL");
+                _LABEL = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("LABEL");
+                OnLABELChanged();
+            }
+        }
+        private global::System.String _LABEL;
+        partial void OnLABELChanging(global::System.String value);
+        partial void OnLABELChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String DESCRIPTION
+        {
+            get
+            {
+                return _DESCRIPTION;
+            }
+            set
+            {
+                OnDESCRIPTIONChanging(value);
+                ReportPropertyChanging("DESCRIPTION");
+                _DESCRIPTION = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("DESCRIPTION");
+                OnDESCRIPTIONChanged();
+            }
+        }
+        private global::System.String _DESCRIPTION;
+        partial void OnDESCRIPTIONChanging(global::System.String value);
+        partial void OnDESCRIPTIONChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SecurityDB.Models", Name="AccessPages")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AccessPages : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта AccessPages.
+        /// </summary>
+        /// <param name="aCCESSPAGE_ID">Исходное значение свойства ACCESSPAGE_ID.</param>
+        /// <param name="nAME">Исходное значение свойства NAME.</param>
+        public static AccessPages CreateAccessPages(global::System.Int64 aCCESSPAGE_ID, global::System.String nAME)
+        {
+            AccessPages accessPages = new AccessPages();
+            accessPages.ACCESSPAGE_ID = aCCESSPAGE_ID;
+            accessPages.NAME = nAME;
+            return accessPages;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 ACCESSPAGE_ID
+        {
+            get
+            {
+                return _ACCESSPAGE_ID;
+            }
+            set
+            {
+                if (_ACCESSPAGE_ID != value)
+                {
+                    OnACCESSPAGE_IDChanging(value);
+                    ReportPropertyChanging("ACCESSPAGE_ID");
+                    _ACCESSPAGE_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ACCESSPAGE_ID");
+                    OnACCESSPAGE_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _ACCESSPAGE_ID;
+        partial void OnACCESSPAGE_IDChanging(global::System.Int64 value);
+        partial void OnACCESSPAGE_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.String NAME
+        {
+            get
+            {
+                return _NAME;
+            }
+            set
+            {
+                OnNAMEChanging(value);
+                ReportPropertyChanging("NAME");
+                _NAME = StructuralObject.SetValidValue(value, false);
+                ReportPropertyChanged("NAME");
+                OnNAMEChanged();
+            }
+        }
+        private global::System.String _NAME;
+        partial void OnNAMEChanging(global::System.String value);
+        partial void OnNAMEChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SecurityDB.Models", Name="AccessPagesInAccessGroups")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class AccessPagesInAccessGroups : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта AccessPagesInAccessGroups.
+        /// </summary>
+        /// <param name="aPIAG_ID">Исходное значение свойства APIAG_ID.</param>
+        public static AccessPagesInAccessGroups CreateAccessPagesInAccessGroups(global::System.Int64 aPIAG_ID)
+        {
+            AccessPagesInAccessGroups accessPagesInAccessGroups = new AccessPagesInAccessGroups();
+            accessPagesInAccessGroups.APIAG_ID = aPIAG_ID;
+            return accessPagesInAccessGroups;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 APIAG_ID
+        {
+            get
+            {
+                return _APIAG_ID;
+            }
+            set
+            {
+                if (_APIAG_ID != value)
+                {
+                    OnAPIAG_IDChanging(value);
+                    ReportPropertyChanging("APIAG_ID");
+                    _APIAG_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("APIAG_ID");
+                    OnAPIAG_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _APIAG_ID;
+        partial void OnAPIAG_IDChanging(global::System.Int64 value);
+        partial void OnAPIAG_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> ACCESSPAGE_ID
+        {
+            get
+            {
+                return _ACCESSPAGE_ID;
+            }
+            set
+            {
+                OnACCESSPAGE_IDChanging(value);
+                ReportPropertyChanging("ACCESSPAGE_ID");
+                _ACCESSPAGE_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACCESSPAGE_ID");
+                OnACCESSPAGE_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _ACCESSPAGE_ID;
+        partial void OnACCESSPAGE_IDChanging(Nullable<global::System.Int64> value);
+        partial void OnACCESSPAGE_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int64> ACCESSGROUP_ID
+        {
+            get
+            {
+                return _ACCESSGROUP_ID;
+            }
+            set
+            {
+                OnACCESSGROUP_IDChanging(value);
+                ReportPropertyChanging("ACCESSGROUP_ID");
+                _ACCESSGROUP_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACCESSGROUP_ID");
+                OnACCESSGROUP_IDChanged();
+            }
+        }
+        private Nullable<global::System.Int64> _ACCESSGROUP_ID;
+        partial void OnACCESSGROUP_IDChanging(Nullable<global::System.Int64> value);
+        partial void OnACCESSGROUP_IDChanged();
+
+        #endregion
+    
+    }
     
     /// <summary>
     /// Нет доступной документации по метаданным.
@@ -532,6 +943,90 @@ namespace NetTelco.NetTelcoAuth
         private global::System.String _LAST_LOCKED_OUT_REASON;
         partial void OnLAST_LOCKED_OUT_REASONChanging(global::System.String value);
         partial void OnLAST_LOCKED_OUT_REASONChanged();
+
+        #endregion
+    
+    }
+    
+    /// <summary>
+    /// Нет доступной документации по метаданным.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="SecurityDB.Models", Name="UsersInAccessGroups")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class UsersInAccessGroups : EntityObject
+    {
+        #region Фабричный метод
+    
+        /// <summary>
+        /// Создание нового объекта UsersInAccessGroups.
+        /// </summary>
+        /// <param name="uSER_ID">Исходное значение свойства USER_ID.</param>
+        /// <param name="aCCESSGROUP_ID">Исходное значение свойства ACCESSGROUP_ID.</param>
+        public static UsersInAccessGroups CreateUsersInAccessGroups(global::System.Int64 uSER_ID, global::System.Int64 aCCESSGROUP_ID)
+        {
+            UsersInAccessGroups usersInAccessGroups = new UsersInAccessGroups();
+            usersInAccessGroups.USER_ID = uSER_ID;
+            usersInAccessGroups.ACCESSGROUP_ID = aCCESSGROUP_ID;
+            return usersInAccessGroups;
+        }
+
+        #endregion
+        #region Свойства-примитивы
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 USER_ID
+        {
+            get
+            {
+                return _USER_ID;
+            }
+            set
+            {
+                if (_USER_ID != value)
+                {
+                    OnUSER_IDChanging(value);
+                    ReportPropertyChanging("USER_ID");
+                    _USER_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("USER_ID");
+                    OnUSER_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _USER_ID;
+        partial void OnUSER_IDChanging(global::System.Int64 value);
+        partial void OnUSER_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int64 ACCESSGROUP_ID
+        {
+            get
+            {
+                return _ACCESSGROUP_ID;
+            }
+            set
+            {
+                if (_ACCESSGROUP_ID != value)
+                {
+                    OnACCESSGROUP_IDChanging(value);
+                    ReportPropertyChanging("ACCESSGROUP_ID");
+                    _ACCESSGROUP_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("ACCESSGROUP_ID");
+                    OnACCESSGROUP_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _ACCESSGROUP_ID;
+        partial void OnACCESSGROUP_IDChanging(global::System.Int64 value);
+        partial void OnACCESSGROUP_IDChanged();
 
         #endregion
     

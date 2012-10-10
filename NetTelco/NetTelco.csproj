@@ -62,8 +62,9 @@
     <Content Include="App_Themes\Default\DefaultStyle.css" />
     <Content Include="NetTelcoAuth\AccessAdmin.aspx" />
     <Content Include="NetTelcoAuth\Auth.aspx" />
-    <Content Include="NetTelcoAuth\AuthCheck.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="NetTelcoAuth\Login.aspx" />
+    <Content Include="NetTelcoAuth\Logout.aspx" />
     <Content Include="Users.aspx" />
     <Content Include="UsersODS.aspx" />
     <Content Include="Web.config">
@@ -91,13 +92,6 @@
     <Compile Include="NetTelcoAuth\Auth.aspx.designer.cs">
       <DependentUpon>Auth.aspx</DependentUpon>
     </Compile>
-    <Compile Include="NetTelcoAuth\AuthCheck.aspx.cs">
-      <DependentUpon>AuthCheck.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="NetTelcoAuth\AuthCheck.aspx.designer.cs">
-      <DependentUpon>AuthCheck.aspx</DependentUpon>
-    </Compile>
     <Compile Include="BIZ\BizUserLogic.cs" />
     <Compile Include="MainRoot.Master.cs">
       <DependentUpon>MainRoot.Master</DependentUpon>
@@ -106,12 +100,29 @@
     <Compile Include="MainRoot.Master.designer.cs">
       <DependentUpon>MainRoot.Master</DependentUpon>
     </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NetTelcoAuth\AuthCheck.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="NetTelcoAuth\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="NetTelcoAuth\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NetTelcoAuth\Logout.aspx.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NetTelcoAuth\Logout.aspx.designer.cs">
+      <DependentUpon>Logout.aspx</DependentUpon>
     </Compile>
     <Compile Include="NetTelcoAuth\NetTelcoMembershipProvider.cs" />
     <Compile Include="NetTelcoAuth\NetTelcoUserRepository.cs" />

@@ -96,6 +96,25 @@ namespace NetTelco.NetTelcoAuth
             }
         }
 
+        public string CheckUserPageAccess(string user_login)
+        {
+            string str = "";
+            using (SecurityDBEntities db = new SecurityDBEntities())
+            {
+                var _user_roles = (from r in db.UsersInAccessGroups 
+                                   where (r.USER_ID == (from u in db.Users 
+                                                          where (u.LOGIN == user_login) select u.USER_ID).FirstOrDefault())
+                                   select r.ACCESSGROUP_ID);
+
+                foreach (int i in _user_roles)
+                    str = str + i.ToString() + "; ";
+            }
+            return str;        
+        }
+
+
+
+
         public bool ValidateUser(string username, string password)
         {
             using (SecurityDBEntities db = new SecurityDBEntities())
@@ -107,7 +126,9 @@ namespace NetTelco.NetTelcoAuth
                     var dbuser = result.First();
 
                     if (dbuser.PASSWORD == CreatePasswordHash(password, dbuser.PASSWORD_SALT))
+                    {
                         return true;
+                    }
                     else
                         return false;
                 }

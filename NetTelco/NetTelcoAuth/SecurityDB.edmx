@@ -6,8 +6,36 @@
     <edmx:StorageModels>
     <Schema Namespace="SecurityDB.Models.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="SecurityDBModelsStoreContainer">
+          <EntitySet Name="AccessGroups" EntityType="SecurityDB.Models.Store.AccessGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AccessPages" EntityType="SecurityDB.Models.Store.AccessPages" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AccessPagesInAccessGroups" EntityType="SecurityDB.Models.Store.AccessPagesInAccessGroups" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="SecurityDB.Models.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersInAccessGroups" EntityType="SecurityDB.Models.Store.UsersInAccessGroups" store:Type="Tables" Schema="dbo" />
         </EntityContainer>
+        <EntityType Name="AccessGroups">
+          <Key>
+            <PropertyRef Name="ACCESSGROUP_ID" />
+          </Key>
+          <Property Name="ACCESSGROUP_ID" Type="bigint" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="32" />
+          <Property Name="LABEL" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AccessPages">
+          <Key>
+            <PropertyRef Name="ACCESSPAGE_ID" />
+          </Key>
+          <Property Name="ACCESSPAGE_ID" Type="bigint" Nullable="false" />
+          <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AccessPagesInAccessGroups">
+          <Key>
+            <PropertyRef Name="APIAG_ID" />
+          </Key>
+          <Property Name="APIAG_ID" Type="bigint" Nullable="false" />
+          <Property Name="ACCESSPAGE_ID" Type="bigint" />
+          <Property Name="ACCESSGROUP_ID" Type="bigint" />
+        </EntityType>
         <EntityType Name="Users">
           <Key>
             <PropertyRef Name="USER_ID" />
@@ -29,12 +57,24 @@
           <Property Name="LAST_LOCKED_OUT_DATE" Type="datetime2" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_REASON" Type="nvarchar" MaxLength="500" />
         </EntityType>
+        <EntityType Name="UsersInAccessGroups">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="ACCESSGROUP_ID" />
+          </Key>
+          <Property Name="USER_ID" Type="bigint" Nullable="false" />
+          <Property Name="ACCESSGROUP_ID" Type="bigint" Nullable="false" />
+        </EntityType>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SecurityDB.Models" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
         <EntityContainer Name="SecurityDBEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Users" EntityType="SecurityDB.Models.Users" />
+          <EntitySet Name="AccessGroups" EntityType="SecurityDB.Models.AccessGroups" />
+          <EntitySet Name="AccessPages" EntityType="SecurityDB.Models.AccessPages" />
+          <EntitySet Name="AccessPagesInAccessGroups" EntityType="SecurityDB.Models.AccessPagesInAccessGroups" />
+          <EntitySet Name="UsersInAccessGroups" EntityType="SecurityDB.Models.UsersInAccessGroups" />
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
@@ -56,6 +96,38 @@
           <Property Name="IS_LOCKED_OUT" Type="Boolean" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_DATE" Type="DateTime" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_REASON" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AccessGroups">
+          <Key>
+            <PropertyRef Name="ACCESSGROUP_ID" />
+          </Key>
+          <Property Type="Int64" Name="ACCESSGROUP_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="LABEL" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="DESCRIPTION" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AccessPages">
+          <Key>
+            <PropertyRef Name="ACCESSPAGE_ID" />
+          </Key>
+          <Property Type="Int64" Name="ACCESSPAGE_ID" Nullable="false" />
+          <Property Type="String" Name="NAME" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AccessPagesInAccessGroups">
+          <Key>
+            <PropertyRef Name="APIAG_ID" />
+          </Key>
+          <Property Type="Int64" Name="APIAG_ID" Nullable="false" />
+          <Property Type="Int64" Name="ACCESSPAGE_ID" />
+          <Property Type="Int64" Name="ACCESSGROUP_ID" />
+        </EntityType>
+        <EntityType Name="UsersInAccessGroups">
+          <Key>
+            <PropertyRef Name="USER_ID" />
+            <PropertyRef Name="ACCESSGROUP_ID" />
+          </Key>
+          <Property Type="Int64" Name="USER_ID" Nullable="false" />
+          <Property Type="Int64" Name="ACCESSGROUP_ID" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -81,6 +153,41 @@
             <ScalarProperty Name="LAST_LOCKED_OUT_DATE" ColumnName="LAST_LOCKED_OUT_DATE" />
             <ScalarProperty Name="LAST_LOCKED_OUT_REASON" ColumnName="LAST_LOCKED_OUT_REASON" />
           </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="AccessGroups">
+            <EntityTypeMapping TypeName="SecurityDB.Models.AccessGroups">
+              <MappingFragment StoreEntitySet="AccessGroups">
+                <ScalarProperty Name="DESCRIPTION" ColumnName="DESCRIPTION" />
+                <ScalarProperty Name="LABEL" ColumnName="LABEL" />
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ACCESSGROUP_ID" ColumnName="ACCESSGROUP_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessPages">
+            <EntityTypeMapping TypeName="SecurityDB.Models.AccessPages">
+              <MappingFragment StoreEntitySet="AccessPages">
+                <ScalarProperty Name="NAME" ColumnName="NAME" />
+                <ScalarProperty Name="ACCESSPAGE_ID" ColumnName="ACCESSPAGE_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccessPagesInAccessGroups">
+            <EntityTypeMapping TypeName="SecurityDB.Models.AccessPagesInAccessGroups">
+              <MappingFragment StoreEntitySet="AccessPagesInAccessGroups">
+                <ScalarProperty Name="ACCESSGROUP_ID" ColumnName="ACCESSGROUP_ID" />
+                <ScalarProperty Name="ACCESSPAGE_ID" ColumnName="ACCESSPAGE_ID" />
+                <ScalarProperty Name="APIAG_ID" ColumnName="APIAG_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersInAccessGroups">
+            <EntityTypeMapping TypeName="SecurityDB.Models.UsersInAccessGroups">
+              <MappingFragment StoreEntitySet="UsersInAccessGroups">
+                <ScalarProperty Name="ACCESSGROUP_ID" ColumnName="ACCESSGROUP_ID" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -102,7 +209,11 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="SecurityDB">
-        <EntityTypeShape EntityType="SecurityDB.Models.Users" Width="1.5" PointX="0.75" PointY="0.75" Height="4.1156022135416652" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityDB.Models.Users" Width="2.25" PointX="0.5" PointY="0.5" Height="4.0956022135416656" IsExpanded="true" />
+        <EntityTypeShape EntityType="SecurityDB.Models.AccessGroups" Width="1.625" PointX="3.5" PointY="0.5" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="SecurityDB.Models.AccessPages" Width="1.75" PointX="6.375" PointY="0.5" Height="1.4033821614583335" />
+        <EntityTypeShape EntityType="SecurityDB.Models.AccessPagesInAccessGroups" Width="1.875" PointX="7.625" PointY="3.5" Height="1.5956835937499996" />
+        <EntityTypeShape EntityType="SecurityDB.Models.UsersInAccessGroups" Width="1.75" PointX="3.25" PointY="3.375" Height="1.4033821614583317" />
       </Diagram>
     </Diagrams>
   </Designer>

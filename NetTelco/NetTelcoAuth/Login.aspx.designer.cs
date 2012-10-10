@@ -10,7 +10,7 @@
 namespace NetTelco.NetTelcoAuth {
     
     
-    public partial class AuthCheck {
+    public partial class Login {
         
         /// <summary>
         /// form1 элемент управления.

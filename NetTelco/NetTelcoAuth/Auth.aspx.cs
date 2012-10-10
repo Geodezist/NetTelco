@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Web.Security;
+using NetTelco;
 
 namespace NetTelco.NetTelcoAuth
 {
@@ -11,6 +13,7 @@ namespace NetTelco.NetTelcoAuth
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+
 
         }
 
@@ -22,6 +25,8 @@ namespace NetTelco.NetTelcoAuth
             if (GetAuth)
             { 
                 LoginErrorLabel.Text = "УРА! ПОЛУЧИЛОСЬ";
+                FormsAuthentication.SetAuthCookie(LoginTextBox.Text, false/*true*/);
+                Response.Redirect("~/Users.aspx");
             } else
             {
                 LoginErrorLabel.Text = "НИФИГА!!!";

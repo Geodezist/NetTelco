@@ -10,6 +10,6 @@
 namespace NetTelco.NetTelcoAuth {
     
     
-    public partial class AuthCheck {
+    public partial class Default {
     }
 }
