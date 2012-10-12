@@ -61,6 +61,7 @@
     </Content>
     <Content Include="App_Themes\Default\DefaultStyle.css" />
     <Content Include="NetTelcoAuth\AccessAdmin.aspx" />
+    <Content Include="NetTelcoAuth\accessdenied.aspx" />
     <Content Include="NetTelcoAuth\Auth.aspx" />
     <Content Include="Default.aspx" />
     <Content Include="NetTelcoAuth\Login.aspx" />
@@ -84,6 +85,13 @@
     </Compile>
     <Compile Include="NetTelcoAuth\AccessAdmin.aspx.designer.cs">
       <DependentUpon>AccessAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="NetTelcoAuth\accessdenied.aspx.cs">
+      <DependentUpon>accessdenied.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="NetTelcoAuth\accessdenied.aspx.designer.cs">
+      <DependentUpon>accessdenied.aspx</DependentUpon>
     </Compile>
     <Compile Include="NetTelcoAuth\Auth.aspx.cs">
       <DependentUpon>Auth.aspx</DependentUpon>

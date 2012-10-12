@@ -106,7 +106,7 @@
         OnClick="AddUserButton_Click" />
     <br />
     <br />
-    <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+    <asp:Label ID="Label1" runat="server" Text="Label">AAA</asp:Label>
     <br />
     <br />
     <asp:GridView ID="GridView1" runat="server" DataSourceID="UsersDBSource">

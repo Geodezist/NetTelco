@@ -7,10 +7,11 @@ using System.Web.UI.WebControls;
 using System.Data;
 using System.Configuration;
 using System.Data.SqlClient;
+using NetTelco.NetTelcoAuth;
 
 namespace NetTelco
 {
-    public partial class Users : System.Web.UI.Page
+    public partial class Users : AuthCheck //System.Web.UI.Page
     {
         private string connString = ConfigurationManager.ConnectionStrings["SecurityDB"].ConnectionString;
 
@@ -18,7 +19,6 @@ namespace NetTelco
         {
             if (!IsPostBack)
                 BindData();
-
         }
 
 
@@ -31,12 +31,6 @@ namespace NetTelco
 
         private DataSet RetrieveData()
         {
-            //if (ViewState["dsProducts"] != null)
-                //return (DataSet)ViewState["dsProducts"];
-
-            //fetch the connection string from web.config
-            //string connString = ConfigurationManager.ConnectionStrings["SecurityDB"].ConnectionString;
-
             //SQL statement to fetch entries from products
             string sql = @"SELECT * FROM [Users]";
 
