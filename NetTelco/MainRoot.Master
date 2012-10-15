@@ -31,13 +31,15 @@
             </td>
         </tr>
         <tr>
-            <td width="100px">
+            <td width="100px" valign="top">
                 <br />
                 <a href="~/Users.aspx" runat="server">Работас&nbspSQL&nbspData&nbspSource</a><br />
-                <br />
-                <a href="~/UsersODS.aspx" runat="server">Работа с LINQ to SQL и Object Data Source</a><br />
-                <br />
+                                <br />
                 <a href="~/NetTelcoAuth/AccessAdmin.aspx" runat="server">AccessAdmin.aspx</a><br />
+                <br />
+                <a href="~/NetTelcoAuth/usersedit.aspx" runat="server">Пользователи</a><br />
+                <br />
+                <a href="~/NetTelcoAuth/groupsedit.aspx" runat="server">Группы</a><br />
             </td>
             <td>
                 <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">

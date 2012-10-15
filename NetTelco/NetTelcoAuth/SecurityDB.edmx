@@ -11,12 +11,28 @@
           <EntitySet Name="AccessPagesInAccessGroups" EntityType="SecurityDB.Models.Store.AccessPagesInAccessGroups" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Users" EntityType="SecurityDB.Models.Store.Users" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="UsersInAccessGroups" EntityType="SecurityDB.Models.Store.UsersInAccessGroups" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_AccessPagesInAccessGroups_AccessGroups" Association="SecurityDB.Models.Store.FK_AccessPagesInAccessGroups_AccessGroups">
+            <End Role="AccessGroups" EntitySet="AccessGroups" />
+            <End Role="AccessPagesInAccessGroups" EntitySet="AccessPagesInAccessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessPagesInAccessGroups_AccessPages" Association="SecurityDB.Models.Store.FK_AccessPagesInAccessGroups_AccessPages">
+            <End Role="AccessPages" EntitySet="AccessPages" />
+            <End Role="AccessPagesInAccessGroups" EntitySet="AccessPagesInAccessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInAccessGroups_AccessGroups" Association="SecurityDB.Models.Store.FK_UsersInAccessGroups_AccessGroups">
+            <End Role="AccessGroups" EntitySet="AccessGroups" />
+            <End Role="UsersInAccessGroups" EntitySet="UsersInAccessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInAccessGroups_Users" Association="SecurityDB.Models.Store.FK_UsersInAccessGroups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInAccessGroups" EntitySet="UsersInAccessGroups" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="AccessGroups">
           <Key>
             <PropertyRef Name="ACCESSGROUP_ID" />
           </Key>
-          <Property Name="ACCESSGROUP_ID" Type="bigint" Nullable="false" />
+          <Property Name="ACCESSGROUP_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="32" />
           <Property Name="LABEL" Type="nvarchar" Nullable="false" MaxLength="100" />
           <Property Name="DESCRIPTION" Type="nvarchar" MaxLength="500" />
@@ -25,14 +41,14 @@
           <Key>
             <PropertyRef Name="ACCESSPAGE_ID" />
           </Key>
-          <Property Name="ACCESSPAGE_ID" Type="bigint" Nullable="false" />
+          <Property Name="ACCESSPAGE_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="nvarchar" Nullable="false" MaxLength="500" />
         </EntityType>
         <EntityType Name="AccessPagesInAccessGroups">
           <Key>
             <PropertyRef Name="APIAG_ID" />
           </Key>
-          <Property Name="APIAG_ID" Type="bigint" Nullable="false" />
+          <Property Name="APIAG_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="ACCESSPAGE_ID" Type="bigint" />
           <Property Name="ACCESSGROUP_ID" Type="bigint" />
         </EntityType>
@@ -56,15 +72,70 @@
           <Property Name="IS_LOCKED_OUT" Type="bit" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_DATE" Type="datetime2" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_REASON" Type="nvarchar" MaxLength="500" />
+          <Property Name="IS_ADMIN" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="UsersInAccessGroups">
           <Key>
-            <PropertyRef Name="USER_ID" />
-            <PropertyRef Name="ACCESSGROUP_ID" />
+            <PropertyRef Name="UIAG_ID" />
           </Key>
+          <Property Name="UIAG_ID" Type="bigint" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="USER_ID" Type="bigint" Nullable="false" />
           <Property Name="ACCESSGROUP_ID" Type="bigint" Nullable="false" />
         </EntityType>
+        <Association Name="FK_AccessPagesInAccessGroups_AccessGroups">
+          <End Role="AccessGroups" Type="SecurityDB.Models.Store.AccessGroups" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessPagesInAccessGroups" Type="SecurityDB.Models.Store.AccessPagesInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Principal>
+            <Dependent Role="AccessPagesInAccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessPagesInAccessGroups_AccessPages">
+          <End Role="AccessPages" Type="SecurityDB.Models.Store.AccessPages" Multiplicity="0..1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="AccessPagesInAccessGroups" Type="SecurityDB.Models.Store.AccessPagesInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessPages">
+              <PropertyRef Name="ACCESSPAGE_ID" />
+            </Principal>
+            <Dependent Role="AccessPagesInAccessGroups">
+              <PropertyRef Name="ACCESSPAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInAccessGroups_AccessGroups">
+          <End Role="AccessGroups" Type="SecurityDB.Models.Store.AccessGroups" Multiplicity="1" />
+          <End Role="UsersInAccessGroups" Type="SecurityDB.Models.Store.UsersInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Principal>
+            <Dependent Role="UsersInAccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInAccessGroups_Users">
+          <End Role="Users" Type="SecurityDB.Models.Store.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsersInAccessGroups" Type="SecurityDB.Models.Store.UsersInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="UsersInAccessGroups">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -74,7 +145,23 @@
           <EntitySet Name="AccessGroups" EntityType="SecurityDB.Models.AccessGroups" />
           <EntitySet Name="AccessPages" EntityType="SecurityDB.Models.AccessPages" />
           <EntitySet Name="AccessPagesInAccessGroups" EntityType="SecurityDB.Models.AccessPagesInAccessGroups" />
+          <AssociationSet Name="FK_AccessPagesInAccessGroups_AccessGroups" Association="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups">
+            <End Role="AccessGroups" EntitySet="AccessGroups" />
+            <End Role="AccessPagesInAccessGroups" EntitySet="AccessPagesInAccessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AccessPagesInAccessGroups_AccessPages" Association="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages">
+            <End Role="AccessPages" EntitySet="AccessPages" />
+            <End Role="AccessPagesInAccessGroups" EntitySet="AccessPagesInAccessGroups" />
+          </AssociationSet>
           <EntitySet Name="UsersInAccessGroups" EntityType="SecurityDB.Models.UsersInAccessGroups" />
+          <AssociationSet Name="FK_UsersInAccessGroups_AccessGroups" Association="SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups">
+            <End Role="AccessGroups" EntitySet="AccessGroups" />
+            <End Role="UsersInAccessGroups" EntitySet="UsersInAccessGroups" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersInAccessGroups_Users" Association="SecurityDB.Models.FK_UsersInAccessGroups_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="UsersInAccessGroups" EntitySet="UsersInAccessGroups" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Users">
           <Key>
@@ -96,6 +183,8 @@
           <Property Name="IS_LOCKED_OUT" Type="Boolean" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_DATE" Type="DateTime" Nullable="false" />
           <Property Name="LAST_LOCKED_OUT_REASON" Type="String" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Type="Boolean" Name="IS_ADMIN" Nullable="false" />
+          <NavigationProperty Name="UsersInAccessGroups" Relationship="SecurityDB.Models.FK_UsersInAccessGroups_Users" FromRole="Users" ToRole="UsersInAccessGroups" />
         </EntityType>
         <EntityType Name="AccessGroups">
           <Key>
@@ -105,6 +194,8 @@
           <Property Type="String" Name="NAME" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="LABEL" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Type="String" Name="DESCRIPTION" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccessPagesInAccessGroups" Relationship="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups" FromRole="AccessGroups" ToRole="AccessPagesInAccessGroups" />
+          <NavigationProperty Name="UsersInAccessGroups" Relationship="SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups" FromRole="AccessGroups" ToRole="UsersInAccessGroups" />
         </EntityType>
         <EntityType Name="AccessPages">
           <Key>
@@ -112,6 +203,7 @@
           </Key>
           <Property Type="Int64" Name="ACCESSPAGE_ID" Nullable="false" />
           <Property Type="String" Name="NAME" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccessPagesInAccessGroups" Relationship="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages" FromRole="AccessPages" ToRole="AccessPagesInAccessGroups" />
         </EntityType>
         <EntityType Name="AccessPagesInAccessGroups">
           <Key>
@@ -120,15 +212,67 @@
           <Property Type="Int64" Name="APIAG_ID" Nullable="false" />
           <Property Type="Int64" Name="ACCESSPAGE_ID" />
           <Property Type="Int64" Name="ACCESSGROUP_ID" />
+          <NavigationProperty Name="AccessGroups" Relationship="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups" FromRole="AccessPagesInAccessGroups" ToRole="AccessGroups" />
+          <NavigationProperty Name="AccessPages" Relationship="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages" FromRole="AccessPagesInAccessGroups" ToRole="AccessPages" />
         </EntityType>
+        <Association Name="FK_AccessPagesInAccessGroups_AccessGroups">
+          <End Type="SecurityDB.Models.AccessGroups" Role="AccessGroups" Multiplicity="0..1" />
+          <End Type="SecurityDB.Models.AccessPagesInAccessGroups" Role="AccessPagesInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Principal>
+            <Dependent Role="AccessPagesInAccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AccessPagesInAccessGroups_AccessPages">
+          <End Type="SecurityDB.Models.AccessPages" Role="AccessPages" Multiplicity="0..1" />
+          <End Type="SecurityDB.Models.AccessPagesInAccessGroups" Role="AccessPagesInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessPages">
+              <PropertyRef Name="ACCESSPAGE_ID" />
+            </Principal>
+            <Dependent Role="AccessPagesInAccessGroups">
+              <PropertyRef Name="ACCESSPAGE_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityType Name="UsersInAccessGroups">
           <Key>
-            <PropertyRef Name="USER_ID" />
-            <PropertyRef Name="ACCESSGROUP_ID" />
+            <PropertyRef Name="UIAG_ID" />
           </Key>
+          <Property Type="Int64" Name="UIAG_ID" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Type="Int64" Name="USER_ID" Nullable="false" />
           <Property Type="Int64" Name="ACCESSGROUP_ID" Nullable="false" />
+          <NavigationProperty Name="AccessGroups" Relationship="SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups" FromRole="UsersInAccessGroups" ToRole="AccessGroups" />
+          <NavigationProperty Name="Users" Relationship="SecurityDB.Models.FK_UsersInAccessGroups_Users" FromRole="UsersInAccessGroups" ToRole="Users" />
         </EntityType>
+        <Association Name="FK_UsersInAccessGroups_AccessGroups">
+          <End Type="SecurityDB.Models.AccessGroups" Role="AccessGroups" Multiplicity="1" />
+          <End Type="SecurityDB.Models.UsersInAccessGroups" Role="UsersInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Principal>
+            <Dependent Role="UsersInAccessGroups">
+              <PropertyRef Name="ACCESSGROUP_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersInAccessGroups_Users">
+          <End Type="SecurityDB.Models.Users" Role="Users" Multiplicity="1" />
+          <End Type="SecurityDB.Models.UsersInAccessGroups" Role="UsersInAccessGroups" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="USER_ID" />
+            </Principal>
+            <Dependent Role="UsersInAccessGroups">
+              <PropertyRef Name="USER_ID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -136,7 +280,8 @@
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SecurityDBModelsStoreContainer" CdmEntityContainer="SecurityDBEntities">
           <EntitySetMapping Name="Users"><EntityTypeMapping TypeName="SecurityDB.Models.Users"><MappingFragment StoreEntitySet="Users">
-            <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+            <ScalarProperty Name="IS_ADMIN" ColumnName="IS_ADMIN" />
+                <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
             <ScalarProperty Name="FIRST_NAME" ColumnName="FIRST_NAME" />
             <ScalarProperty Name="LAST_NAME" ColumnName="LAST_NAME" />
             <ScalarProperty Name="MIDDLE_NAME" ColumnName="MIDDLE_NAME" />
@@ -185,6 +330,7 @@
               <MappingFragment StoreEntitySet="UsersInAccessGroups">
                 <ScalarProperty Name="ACCESSGROUP_ID" ColumnName="ACCESSGROUP_ID" />
                 <ScalarProperty Name="USER_ID" ColumnName="USER_ID" />
+                <ScalarProperty Name="UIAG_ID" ColumnName="UIAG_ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -210,10 +356,31 @@
     <Diagrams>
       <Diagram Name="SecurityDB">
         <EntityTypeShape EntityType="SecurityDB.Models.Users" Width="2.25" PointX="0.5" PointY="0.5" Height="4.0956022135416656" IsExpanded="true" />
-        <EntityTypeShape EntityType="SecurityDB.Models.AccessGroups" Width="1.625" PointX="3.5" PointY="0.5" Height="1.7879850260416665" />
+        <EntityTypeShape EntityType="SecurityDB.Models.AccessGroups" Width="1.625" PointX="3.875" PointY="0.5" Height="2.172587890625" />
         <EntityTypeShape EntityType="SecurityDB.Models.AccessPages" Width="1.75" PointX="6.375" PointY="0.5" Height="1.4033821614583335" />
-        <EntityTypeShape EntityType="SecurityDB.Models.AccessPagesInAccessGroups" Width="1.875" PointX="7.625" PointY="3.5" Height="1.5956835937499996" />
-        <EntityTypeShape EntityType="SecurityDB.Models.UsersInAccessGroups" Width="1.75" PointX="3.25" PointY="3.375" Height="1.4033821614583317" />
+        <EntityTypeShape EntityType="SecurityDB.Models.AccessPagesInAccessGroups" Width="1.875" PointX="7.875" PointY="3.5" Height="1.9802864583333326" />
+        <AssociationConnector Association="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups" >
+          <ConnectorPoint PointX="5.03125" PointY="2.672587890625" />
+          <ConnectorPoint PointX="5.03125" PointY="3.9403803645833317" />
+          <ConnectorPoint PointX="7.0104141666666671" PointY="3.9403803645833313" />
+          <ConnectorPoint PointX="7.1770808333333331" PointY="3.9403803645833317" />
+          <ConnectorPoint PointX="7.875" PointY="3.9403803645833317" />
+        </AssociationConnector>
+        <AssociationConnector Association="SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages" >
+          <ConnectorPoint PointX="7.0937475" PointY="2.09568359375" />
+          <ConnectorPoint PointX="7.0937475" PointY="4.4432657291666651" />
+          <ConnectorPoint PointX="7.875" PointY="4.4432657291666651" />
+        </AssociationConnector>
+        <EntityTypeShape EntityType="SecurityDB.Models.UsersInAccessGroups" Width="1.5" PointX="3" PointY="4.875" Height="1.9802864583333326" />
+        <AssociationConnector Association="SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups" >
+          <ConnectorPoint PointX="4.1875" PointY="2.672587890625" />
+          <ConnectorPoint PointX="4.1875" PointY="4.875" />
+        </AssociationConnector>
+        <AssociationConnector Association="SecurityDB.Models.FK_UsersInAccessGroups_Users" >
+          <ConnectorPoint PointX="1.625" PointY="4.980205078125" />
+          <ConnectorPoint PointX="1.625" PointY="5.8651432291666659" />
+          <ConnectorPoint PointX="3" PointY="5.8651432291666659" />
+        </AssociationConnector>
       </Diagram>
     </Diagrams>
   </Designer>

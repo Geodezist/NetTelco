@@ -96,32 +96,40 @@ namespace NetTelco.NetTelcoAuth
             }
         }
 
+
+        /// <summary>
+        /// Проверка, доступна ли страница requested_page для пользователя user_login.
+        /// Проверка выполняется по группам, в котрые входит пользователь.
+        /// </summary>
+        /// <param name="user_login"></param>
+        /// <param name="requested_page"></param>
+        /// <returns></returns>
         public bool CheckUserPageAccess(string user_login, string requested_page)
         {
-            string str = "";
+
             using (SecurityDBEntities db = new SecurityDBEntities())
             {
+             
+                // FirsrOrDefault() для типа bool при отсутствии результата вернет false
+                bool _is_user_admin = (from ua in db.Users where (ua.LOGIN == user_login) select ua.IS_ADMIN).FirstOrDefault();
+                // Если пользователь является тотальным администратором, то ему доступно все и всегда.
+                if (_is_user_admin)
+                    return true;
 
+                // В случае когда пользователь не тотальный администратор, то проверяем роли у этого пользователя
+                // и доступна ли данная страница для групп, в которые входит данный пользователь.
                 int _page = (from u in db.Users
                              join g in db.UsersInAccessGroups on u.USER_ID equals g.USER_ID
                              join gp in db.AccessPagesInAccessGroups on g.ACCESSGROUP_ID equals gp.ACCESSGROUP_ID
                              join p in db.AccessPages on gp.ACCESSPAGE_ID equals p.ACCESSPAGE_ID
                              where (u.LOGIN == user_login && p.NAME == requested_page)
                              select p.NAME).Count();
+                
+                // Если хотябы в одной роли страница доступна, то разрешаем показ страницы пользователю
                 if (_page > 0)
                     return true;
                 else
-                    return false;
-                
-                //var _user_roles = (from r in db.UsersInAccessGroups 
-                //                   where (r.USER_ID == (from u in db.Users 
-                //                                          where (u.LOGIN == user_login) select u.USER_ID).FirstOrDefault())
-                //                   select r.ACCESSGROUP_ID);
-
-                //foreach (int i in _user_roles)
-                //    str = str + i.ToString() + "; ";
-
-                //str = str + " - " + _page;        
+                    return false;      
             }
         }
 

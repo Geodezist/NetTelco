@@ -16,6 +16,14 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region Метаданные связи EDM
+
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(NetTelco.NetTelcoAuth.AccessGroups), "AccessPagesInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.AccessPagesInAccessGroups), true)]
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessPages", "AccessPages", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(NetTelco.NetTelcoAuth.AccessPages), "AccessPagesInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.AccessPagesInAccessGroups), true)]
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NetTelco.NetTelcoAuth.AccessGroups), "UsersInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.UsersInAccessGroups), true)]
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NetTelco.NetTelcoAuth.Users), "UsersInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.UsersInAccessGroups), true)]
+
+#endregion
 
 namespace NetTelco.NetTelcoAuth
 {
@@ -325,6 +333,53 @@ namespace NetTelco.NetTelcoAuth
 
         #endregion
     
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessPagesInAccessGroups")]
+        public EntityCollection<AccessPagesInAccessGroups> AccessPagesInAccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AccessPagesInAccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessPagesInAccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AccessPagesInAccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessPagesInAccessGroups", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "UsersInAccessGroups")]
+        public EntityCollection<UsersInAccessGroups> UsersInAccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsersInAccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "UsersInAccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsersInAccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "UsersInAccessGroups", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -406,6 +461,31 @@ namespace NetTelco.NetTelcoAuth
 
         #endregion
     
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessPages", "AccessPagesInAccessGroups")]
+        public EntityCollection<AccessPagesInAccessGroups> AccessPagesInAccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<AccessPagesInAccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPagesInAccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<AccessPagesInAccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPagesInAccessGroups", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -509,6 +589,85 @@ namespace NetTelco.NetTelcoAuth
 
         #endregion
     
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups")]
+        public AccessGroups AccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AccessGroups> AccessGroupsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessPages", "AccessPages")]
+        public AccessPages AccessPages
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessPages>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPages").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessPages>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPages").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AccessPages> AccessPagesReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessPages>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPages");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessPages>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPages", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -536,7 +695,8 @@ namespace NetTelco.NetTelcoAuth
         /// <param name="iS_ACTIVATED">Исходное значение свойства IS_ACTIVATED.</param>
         /// <param name="iS_LOCKED_OUT">Исходное значение свойства IS_LOCKED_OUT.</param>
         /// <param name="lAST_LOCKED_OUT_DATE">Исходное значение свойства LAST_LOCKED_OUT_DATE.</param>
-        public static Users CreateUsers(global::System.Int64 uSER_ID, global::System.String fIRST_NAME, global::System.String lAST_NAME, global::System.String lOGIN, global::System.String pASSWORD, global::System.String pASSWORD_SALT, global::System.DateTime cREATE_DATE, global::System.DateTime lAST_MODIFIED_DATE, global::System.DateTime lAST_LOGIN_DATE, global::System.Boolean iS_ACTIVATED, global::System.Boolean iS_LOCKED_OUT, global::System.DateTime lAST_LOCKED_OUT_DATE)
+        /// <param name="iS_ADMIN">Исходное значение свойства IS_ADMIN.</param>
+        public static Users CreateUsers(global::System.Int64 uSER_ID, global::System.String fIRST_NAME, global::System.String lAST_NAME, global::System.String lOGIN, global::System.String pASSWORD, global::System.String pASSWORD_SALT, global::System.DateTime cREATE_DATE, global::System.DateTime lAST_MODIFIED_DATE, global::System.DateTime lAST_LOGIN_DATE, global::System.Boolean iS_ACTIVATED, global::System.Boolean iS_LOCKED_OUT, global::System.DateTime lAST_LOCKED_OUT_DATE, global::System.Boolean iS_ADMIN)
         {
             Users users = new Users();
             users.USER_ID = uSER_ID;
@@ -551,6 +711,7 @@ namespace NetTelco.NetTelcoAuth
             users.IS_ACTIVATED = iS_ACTIVATED;
             users.IS_LOCKED_OUT = iS_LOCKED_OUT;
             users.LAST_LOCKED_OUT_DATE = lAST_LOCKED_OUT_DATE;
+            users.IS_ADMIN = iS_ADMIN;
             return users;
         }
 
@@ -943,9 +1104,58 @@ namespace NetTelco.NetTelcoAuth
         private global::System.String _LAST_LOCKED_OUT_REASON;
         partial void OnLAST_LOCKED_OUT_REASONChanging(global::System.String value);
         partial void OnLAST_LOCKED_OUT_REASONChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Boolean IS_ADMIN
+        {
+            get
+            {
+                return _IS_ADMIN;
+            }
+            set
+            {
+                OnIS_ADMINChanging(value);
+                ReportPropertyChanging("IS_ADMIN");
+                _IS_ADMIN = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("IS_ADMIN");
+                OnIS_ADMINChanged();
+            }
+        }
+        private global::System.Boolean _IS_ADMIN;
+        partial void OnIS_ADMINChanging(global::System.Boolean value);
+        partial void OnIS_ADMINChanged();
 
         #endregion
     
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_Users", "UsersInAccessGroups")]
+        public EntityCollection<UsersInAccessGroups> UsersInAccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<UsersInAccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "UsersInAccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<UsersInAccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "UsersInAccessGroups", value);
+                }
+            }
+        }
+
+        #endregion
     }
     
     /// <summary>
@@ -961,11 +1171,13 @@ namespace NetTelco.NetTelcoAuth
         /// <summary>
         /// Создание нового объекта UsersInAccessGroups.
         /// </summary>
+        /// <param name="uIAG_ID">Исходное значение свойства UIAG_ID.</param>
         /// <param name="uSER_ID">Исходное значение свойства USER_ID.</param>
         /// <param name="aCCESSGROUP_ID">Исходное значение свойства ACCESSGROUP_ID.</param>
-        public static UsersInAccessGroups CreateUsersInAccessGroups(global::System.Int64 uSER_ID, global::System.Int64 aCCESSGROUP_ID)
+        public static UsersInAccessGroups CreateUsersInAccessGroups(global::System.Int64 uIAG_ID, global::System.Int64 uSER_ID, global::System.Int64 aCCESSGROUP_ID)
         {
             UsersInAccessGroups usersInAccessGroups = new UsersInAccessGroups();
+            usersInAccessGroups.UIAG_ID = uIAG_ID;
             usersInAccessGroups.USER_ID = uSER_ID;
             usersInAccessGroups.ACCESSGROUP_ID = aCCESSGROUP_ID;
             return usersInAccessGroups;
@@ -979,6 +1191,33 @@ namespace NetTelco.NetTelcoAuth
         /// </summary>
         [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
         [DataMemberAttribute()]
+        public global::System.Int64 UIAG_ID
+        {
+            get
+            {
+                return _UIAG_ID;
+            }
+            set
+            {
+                if (_UIAG_ID != value)
+                {
+                    OnUIAG_IDChanging(value);
+                    ReportPropertyChanging("UIAG_ID");
+                    _UIAG_ID = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("UIAG_ID");
+                    OnUIAG_IDChanged();
+                }
+            }
+        }
+        private global::System.Int64 _UIAG_ID;
+        partial void OnUIAG_IDChanging(global::System.Int64 value);
+        partial void OnUIAG_IDChanged();
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
         public global::System.Int64 USER_ID
         {
             get
@@ -987,14 +1226,11 @@ namespace NetTelco.NetTelcoAuth
             }
             set
             {
-                if (_USER_ID != value)
-                {
-                    OnUSER_IDChanging(value);
-                    ReportPropertyChanging("USER_ID");
-                    _USER_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("USER_ID");
-                    OnUSER_IDChanged();
-                }
+                OnUSER_IDChanging(value);
+                ReportPropertyChanging("USER_ID");
+                _USER_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("USER_ID");
+                OnUSER_IDChanged();
             }
         }
         private global::System.Int64 _USER_ID;
@@ -1004,7 +1240,7 @@ namespace NetTelco.NetTelcoAuth
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
         [DataMemberAttribute()]
         public global::System.Int64 ACCESSGROUP_ID
         {
@@ -1014,14 +1250,11 @@ namespace NetTelco.NetTelcoAuth
             }
             set
             {
-                if (_ACCESSGROUP_ID != value)
-                {
-                    OnACCESSGROUP_IDChanging(value);
-                    ReportPropertyChanging("ACCESSGROUP_ID");
-                    _ACCESSGROUP_ID = StructuralObject.SetValidValue(value);
-                    ReportPropertyChanged("ACCESSGROUP_ID");
-                    OnACCESSGROUP_IDChanged();
-                }
+                OnACCESSGROUP_IDChanging(value);
+                ReportPropertyChanging("ACCESSGROUP_ID");
+                _ACCESSGROUP_ID = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ACCESSGROUP_ID");
+                OnACCESSGROUP_IDChanged();
             }
         }
         private global::System.Int64 _ACCESSGROUP_ID;
@@ -1030,6 +1263,85 @@ namespace NetTelco.NetTelcoAuth
 
         #endregion
     
+        #region Свойства навигации
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups")]
+        public AccessGroups AccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AccessGroups> AccessGroupsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_Users", "Users")]
+        public Users Users
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "Users").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "Users").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Users> UsersReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Users>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "Users");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "Users", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
