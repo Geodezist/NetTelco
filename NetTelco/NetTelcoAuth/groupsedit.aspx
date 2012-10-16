@@ -3,7 +3,7 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <table>
         <tr>
@@ -48,11 +48,10 @@
     <br />
     <asp:GridView ID="AccessGroupsGridView" runat="server" CellPadding="4" DataSourceID="AccessGroupsEDS"
         ForeColor="#333333" GridLines="None" AllowPaging="True" 
-        AllowSorting="True" AutoGenerateColumns="False">
+        AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ACCESSGROUP_ID">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
-            <asp:BoundField DataField="ACCESSGROUP_ID" HeaderText="ID" SortExpression="ID"/>
             <asp:BoundField DataField="NAME" HeaderText="Системное название" SortExpression="NAME" />
             <asp:BoundField DataField="LABEL" HeaderText="Название" SortExpression="LABEL" />
             <asp:BoundField DataField="DESCRIPTION" HeaderText="Описание" SortExpression="DESCRIPTION" />
@@ -61,7 +60,7 @@
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB" />
+        <RowStyle BackColor="#EFF3FB"/>
         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
         <SortedAscendingCellStyle BackColor="#F5F7FB" />
         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
@@ -71,8 +70,5 @@
     <asp:EntityDataSource ID="AccessGroupsEDS" runat="server" ConnectionString="name=SecurityDBEntities"
         DefaultContainerName="SecurityDBEntities" EnableFlattening="False" EntitySetName="AccessGroups"
         EnableDelete="True" EnableInsert="True" EnableUpdate="True">
-        <DeleteParameters>
-        
-        </DeleteParameters>
     </asp:EntityDataSource>
 </asp:Content>

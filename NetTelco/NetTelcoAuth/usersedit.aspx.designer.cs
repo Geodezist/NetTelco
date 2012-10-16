@@ -22,6 +22,15 @@ namespace NetTelco.NetTelcoAuth {
         protected global::System.Web.UI.WebControls.GridView UsersEditGridView;
         
         /// <summary>
+        /// UsersDetailGridView элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DetailsView UsersDetailGridView;
+        
+        /// <summary>
         /// UsersEDS элемент управления.
         /// </summary>
         /// <remarks>
@@ -29,5 +38,14 @@ namespace NetTelco.NetTelcoAuth {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource UsersEDS;
+        
+        /// <summary>
+        /// UsersDetailEDS элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource UsersDetailEDS;
     }
 }

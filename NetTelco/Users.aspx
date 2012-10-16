@@ -5,7 +5,7 @@
 </asp:Content>
 
 
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <asp:GridView ID="UserGrid" runat="server" AllowSorting="True" AutoGenerateColumns="False"
         DataKeyNames="USER_ID" CellPadding="4" ForeColor="#333333" OnRowCommand="userGrid_RowCommand"
         OnRowEditing="userGrid_RowEditing" OnRowUpdating="userGrid_RowUpdating" OnRowCancelingEdit="userGrid_RowCancelingEdit"

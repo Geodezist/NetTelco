@@ -18,10 +18,10 @@ using System.Runtime.Serialization;
 [assembly: EdmSchemaAttribute()]
 #region Метаданные связи EDM
 
-[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(NetTelco.NetTelcoAuth.AccessGroups), "AccessPagesInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.AccessPagesInAccessGroups), true)]
 [assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessPages", "AccessPages", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(NetTelco.NetTelcoAuth.AccessPages), "AccessPagesInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.AccessPagesInAccessGroups), true)]
-[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NetTelco.NetTelcoAuth.AccessGroups), "UsersInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.UsersInAccessGroups), true)]
 [assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_Users", "Users", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NetTelco.NetTelcoAuth.Users), "UsersInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.UsersInAccessGroups), true)]
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(NetTelco.NetTelcoAuth.AccessGroups), "AccessPagesInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.AccessPagesInAccessGroups), true)]
+[assembly: EdmRelationshipAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(NetTelco.NetTelcoAuth.AccessGroups), "UsersInAccessGroups", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(NetTelco.NetTelcoAuth.UsersInAccessGroups), true)]
 
 #endregion
 
@@ -92,22 +92,6 @@ namespace NetTelco.NetTelcoAuth
         /// <summary>
         /// Нет доступной документации по метаданным.
         /// </summary>
-        public ObjectSet<AccessGroups> AccessGroups
-        {
-            get
-            {
-                if ((_AccessGroups == null))
-                {
-                    _AccessGroups = base.CreateObjectSet<AccessGroups>("AccessGroups");
-                }
-                return _AccessGroups;
-            }
-        }
-        private ObjectSet<AccessGroups> _AccessGroups;
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
         public ObjectSet<AccessPages> AccessPages
         {
             get
@@ -152,6 +136,22 @@ namespace NetTelco.NetTelcoAuth
             }
         }
         private ObjectSet<UsersInAccessGroups> _UsersInAccessGroups;
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        public ObjectSet<AccessGroups> AccessGroups
+        {
+            get
+            {
+                if ((_AccessGroups == null))
+                {
+                    _AccessGroups = base.CreateObjectSet<AccessGroups>("AccessGroups");
+                }
+                return _AccessGroups;
+            }
+        }
+        private ObjectSet<AccessGroups> _AccessGroups;
 
         #endregion
         #region Методы AddTo
@@ -162,14 +162,6 @@ namespace NetTelco.NetTelcoAuth
         public void AddToUsers(Users users)
         {
             base.AddObject("Users", users);
-        }
-    
-        /// <summary>
-        /// Устаревший метод для добавления новых объектов в набор EntitySet AccessGroups. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
-        /// </summary>
-        public void AddToAccessGroups(AccessGroups accessGroups)
-        {
-            base.AddObject("AccessGroups", accessGroups);
         }
     
         /// <summary>
@@ -194,6 +186,14 @@ namespace NetTelco.NetTelcoAuth
         public void AddToUsersInAccessGroups(UsersInAccessGroups usersInAccessGroups)
         {
             base.AddObject("UsersInAccessGroups", usersInAccessGroups);
+        }
+    
+        /// <summary>
+        /// Устаревший метод для добавления новых объектов в набор EntitySet AccessGroups. Взамен можно использовать метод .Add связанного свойства ObjectSet&lt;T&gt;.
+        /// </summary>
+        public void AddToAccessGroups(AccessGroups accessGroups)
+        {
+            base.AddObject("AccessGroups", accessGroups);
         }
 
         #endregion
@@ -597,44 +597,6 @@ namespace NetTelco.NetTelcoAuth
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups")]
-        public AccessGroups AccessGroups
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<AccessGroups> AccessGroupsReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessPages", "AccessPages")]
         public AccessPages AccessPages
         {
@@ -663,6 +625,44 @@ namespace NetTelco.NetTelcoAuth
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessPages>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessPages", "AccessPages", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups")]
+        public AccessGroups AccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AccessGroups> AccessGroupsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_AccessPagesInAccessGroups_AccessGroups", "AccessGroups", value);
                 }
             }
         }
@@ -1271,44 +1271,6 @@ namespace NetTelco.NetTelcoAuth
         [XmlIgnoreAttribute()]
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
-        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups")]
-        public AccessGroups AccessGroups
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value;
-            }
-            set
-            {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value = value;
-            }
-        }
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [BrowsableAttribute(false)]
-        [DataMemberAttribute()]
-        public EntityReference<AccessGroups> AccessGroupsReference
-        {
-            get
-            {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups");
-            }
-            set
-            {
-                if ((value != null))
-                {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups", value);
-                }
-            }
-        }
-    
-        /// <summary>
-        /// Нет доступной документации по метаданным.
-        /// </summary>
-        [XmlIgnoreAttribute()]
-        [SoapIgnoreAttribute()]
-        [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_Users", "Users")]
         public Users Users
         {
@@ -1337,6 +1299,44 @@ namespace NetTelco.NetTelcoAuth
                 if ((value != null))
                 {
                     ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Users>("SecurityDB.Models.FK_UsersInAccessGroups_Users", "Users", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("SecurityDB.Models", "FK_UsersInAccessGroups_AccessGroups", "AccessGroups")]
+        public AccessGroups AccessGroups
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups").Value = value;
+            }
+        }
+        /// <summary>
+        /// Нет доступной документации по метаданным.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<AccessGroups> AccessGroupsReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<AccessGroups>("SecurityDB.Models.FK_UsersInAccessGroups_AccessGroups", "AccessGroups", value);
                 }
             }
         }

@@ -68,6 +68,7 @@
     <Content Include="NetTelcoAuth\Login.aspx" />
     <Content Include="NetTelcoAuth\Logout.aspx" />
     <Content Include="NetTelcoAuth\usersedit.aspx" />
+    <Content Include="Styles.css" />
     <Content Include="Users.aspx" />
     <Content Include="UsersODS.aspx" />
     <Content Include="Web.config">
@@ -102,7 +103,6 @@
     <Compile Include="NetTelcoAuth\Auth.aspx.designer.cs">
       <DependentUpon>Auth.aspx</DependentUpon>
     </Compile>
-    <Compile Include="BIZ\BizUserLogic.cs" />
     <Compile Include="MainRoot.Master.cs">
       <DependentUpon>MainRoot.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

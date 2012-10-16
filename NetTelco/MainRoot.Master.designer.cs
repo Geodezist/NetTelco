@@ -31,6 +31,24 @@ namespace NetTelco {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// MainContent элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent;
+        
+        /// <summary>
+        /// LoginContent элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder LoginContent;
+        
+        /// <summary>
         /// UserLoginView элемент управления.
         /// </summary>
         /// <remarks>
@@ -49,12 +67,30 @@ namespace NetTelco {
         protected global::System.Web.UI.WebControls.LoginStatus UserLoginStatus;
         
         /// <summary>
-        /// ContentPlaceHolder1 элемент управления.
+        /// A1 элемент управления.
         /// </summary>
         /// <remarks>
         /// Автоматически создаваемое поле.
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder ContentPlaceHolder1;
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A1;
+        
+        /// <summary>
+        /// A3 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A3;
+        
+        /// <summary>
+        /// A4 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor A4;
     }
 }

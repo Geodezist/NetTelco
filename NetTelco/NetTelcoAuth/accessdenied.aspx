@@ -8,7 +8,7 @@
         }
     </style>
 </asp:Content>
-<asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+<asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <p class="style1">
         <strong>ДОСТУП ЗАПРЕЩЕН!!!!!!!</strong></p>
 </asp:Content>
