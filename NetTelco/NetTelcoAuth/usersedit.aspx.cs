@@ -30,5 +30,23 @@ namespace NetTelco.NetTelcoAuth
                 UsersEditGridView.DataBind();
             }
         }
+
+        protected void AddGroupButton_Click(object sender, EventArgs e)
+        {
+            NetTelcoUserRepository AddUserInGroup = new NetTelcoUserRepository();
+
+            AddUserInGroup.AddUserInAccessGroup(Convert.ToInt64( UsersEditGridView.SelectedValue.ToString()), Convert.ToInt64(NotAllowedGroups.SelectedValue.ToString()));
+            AllowedGroups.DataBind();
+            NotAllowedGroups.DataBind();
+        }
+
+        protected void RemoveGroupButton_Click(object sender, EventArgs e)
+        {
+            NetTelcoUserRepository RemoveUserInGroup = new NetTelcoUserRepository();
+
+            RemoveUserInGroup.RemoveUserInAccessGroup(Convert.ToInt64(AllowedGroups.SelectedValue.ToString()));
+            AllowedGroups.DataBind();
+            NotAllowedGroups.DataBind();
+        }
     }
 }

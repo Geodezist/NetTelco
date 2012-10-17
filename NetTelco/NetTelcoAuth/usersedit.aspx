@@ -1,16 +1,16 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainRoot.Master" AutoEventWireup="true" CodeBehind="usersedit.aspx.cs" Inherits="NetTelco.NetTelcoAuth.usersedit" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainRoot.Master" AutoEventWireup="true"
+    CodeBehind="usersedit.aspx.cs" Inherits="NetTelco.NetTelcoAuth.usersedit" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
     <br />
     <asp:GridView ID="UsersEditGridView" runat="server" AllowPaging="True" AutoGenerateColumns="False"
-        AllowSorting="True" CellPadding="4" DataSourceID="UsersEDS" 
-        ForeColor="#333333" GridLines="None" DataKeyNames="USER_ID" 
-        SelectedIndex="0">
+        AllowSorting="True" CellPadding="4" DataSourceID="UsersEDS" ForeColor="#333333"
+        GridLines="None" DataKeyNames="USER_ID" SelectedIndex="0">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" ShowSelectButton="True" />
-
             <asp:BoundField DataField="LAST_NAME" HeaderText="Фамилия" SortExpression="LAST_MANE" />
             <asp:BoundField DataField="FIRST_NAME" HeaderText="Имя" SortExpression="FIRST_NAME" />
             <asp:BoundField DataField="MIDDLE_NAME" HeaderText="Отчество" SortExpression="MIDDLE_NAME" />
@@ -33,13 +33,9 @@
     </asp:GridView>
     <br />
     <br />
-    <br />
     <asp:DetailsView ID="UsersDetailGridView" runat="server" CellPadding="4" AutoGenerateRows="False"
-        DataSourceID="UsersDetailEDS" DataKeyNames="USER_ID"
-        ForeColor="#333333" GridLines="None" Height="50px" 
-        Width="125px"
-        OnItemCommand="NewUserCommand" 
-        OnItemCreated="UsersDetailGridView_ItemCreated">
+        DataSourceID="UsersDetailEDS" DataKeyNames="USER_ID" ForeColor="#333333" GridLines="None"
+        Height="50px" Width="125px" OnItemCommand="NewUserCommand">
         <AlternatingRowStyle BackColor="White" />
         <CommandRowStyle BackColor="#D1DDF1" Font-Bold="True" />
         <EditRowStyle BackColor="#2461BF" />
@@ -53,7 +49,6 @@
                     <asp:TextBox ID="LAST_NAMETextBox" runat="server" Text='<%#Eval("LAST_NAME")%>' />
                 </EditItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField HeaderText="Имя">
                 <ItemTemplate>
                     <%#Eval("FIRST_NAME")%>
@@ -62,7 +57,6 @@
                     <asp:TextBox ID="FIRST_NAMETextBox" runat="server" Text='<%#Eval("FIRST_NAME")%>' />
                 </EditItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField HeaderText="Отчество">
                 <ItemTemplate>
                     <%#Eval("MIDDLE_NAME")%>
@@ -71,7 +65,6 @@
                     <asp:TextBox ID="MIDDLE_NAMETextBox" runat="server" Text='<%#Eval("MIDDLE_NAME")%>' />
                 </EditItemTemplate>
             </asp:TemplateField>
-            
             <asp:TemplateField HeaderText="Логин">
                 <ItemTemplate>
                     <%#Eval("LOGIN")%>
@@ -80,19 +73,16 @@
                     <asp:TextBox ID="LOGINTextBox" runat="server" Text='<%#Eval("LOGIN")%>' />
                 </EditItemTemplate>
             </asp:TemplateField>
-            
             <asp:TemplateField HeaderText="Пароль">
                 <EditItemTemplate>
-                    <asp:TextBox ID="PASSWORDTextBox" runat="server"/>
+                    <asp:TextBox ID="PASSWORDTextBox" runat="server" />
                 </EditItemTemplate>
             </asp:TemplateField>
-            
             <asp:TemplateField HeaderText="Пароль (еще раз)">
                 <EditItemTemplate>
-                    <asp:TextBox ID="PASSWORDChekTextBox" runat="server"/>
+                    <asp:TextBox ID="PASSWORDChekTextBox" runat="server" />
                 </EditItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField HeaderText="Email">
                 <ItemTemplate>
                     <%#Eval("EMAIL")%>
@@ -100,56 +90,52 @@
                 <EditItemTemplate>
                     <asp:TextBox ID="EMAILTextBox" runat="server" Text='<%#Eval("EMAIL")%>' />
                 </EditItemTemplate>
-            </asp:TemplateField>         
-            
+            </asp:TemplateField>
             <asp:TemplateField HeaderText="Администратор">
                 <ItemTemplate>
-                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_ADMIN")%>' Enabled="false"/>
+                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_ADMIN")%>' Enabled="false" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:CheckBox ID="IS_ADMINCheckBox" runat="server" Checked='<%#Eval("IS_ADMIN")%>'/>
+                    <asp:CheckBox ID="IS_ADMINCheckBox" runat="server" Checked='<%#Eval("IS_ADMIN")%>' />
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="IS_ADMINInsertCheckBox" runat="server" Checked='false'/>
+                    <asp:CheckBox ID="IS_ADMINInsertCheckBox" runat="server" Checked='false' />
                 </InsertItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField HeaderText="Активный">
                 <ItemTemplate>
-                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_ACTIVATED")%>' Enabled="false"/>
+                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_ACTIVATED")%>' Enabled="false" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:CheckBox ID="IS_ACTIVATEDCheckBox" runat="server" Checked='<%#Eval("IS_ACTIVATED")%>'/>
+                    <asp:CheckBox ID="IS_ACTIVATEDCheckBox" runat="server" Checked='<%#Eval("IS_ACTIVATED")%>' />
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="IS_ACTIVATEDInsertCheckBox" runat="server" Checked='false'/>
+                    <asp:CheckBox ID="IS_ACTIVATEDInsertCheckBox" runat="server" Checked='false' />
                 </InsertItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField HeaderText="Блокирован">
                 <ItemTemplate>
-                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_LOCKED_OUT")%>' Enabled="false"/>
+                    <asp:CheckBox runat="server" Checked='<%#Eval("IS_LOCKED_OUT")%>' Enabled="false" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:CheckBox ID="IS_LOCKED_OUTCheckBox" runat="server" Checked='<%#Eval("IS_LOCKED_OUT")%>'/>
+                    <asp:CheckBox ID="IS_LOCKED_OUTCheckBox" runat="server" Checked='<%#Eval("IS_LOCKED_OUT")%>' />
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:CheckBox ID="IS_LOCKED_OUTInsertCheckBox" runat="server" Checked='false'/>
+                    <asp:CheckBox ID="IS_LOCKED_OUTInsertCheckBox" runat="server" Checked='false' />
                 </InsertItemTemplate>
             </asp:TemplateField>
-
             <asp:TemplateField ShowHeader="false">
                 <ItemTemplate>
-                    <asp:Button ID="EditStartButton" CommandName="Edit" runat="server" Text="Изменить"/>
-                    <asp:Button ID="InsertStartButton" CommandName="New" runat="server" Text="Создать"/>
+                    <asp:Button ID="EditStartButton" CommandName="Edit" runat="server" Text="Изменить" />
+                    <asp:Button ID="InsertStartButton" CommandName="New" runat="server" Text="Создать" />
                 </ItemTemplate>
                 <EditItemTemplate>
-                    <asp:Button ID="EditSaveButton" CommandName="Update" runat="server" Text="Сохранить"/>
-                    <asp:Button ID="CancelEditButton" CommandName="Cancel" runat="server" Text="Отменить"/>
+                    <asp:Button ID="EditSaveButton" CommandName="Update" runat="server" Text="Сохранить" />
+                    <asp:Button ID="CancelEditButton" CommandName="Cancel" runat="server" Text="Отменить" />
                 </EditItemTemplate>
                 <InsertItemTemplate>
-                    <asp:Button ID="InsertSaveButton" CommandName="InsertNewUser" runat="server" Text="Сохранить"/>
-                    <asp:Button ID="CancelInsertButton" CommandName="Cancel" runat="server" Text="Отменить"/>
+                    <asp:Button ID="InsertSaveButton" CommandName="InsertNewUser" runat="server" Text="Сохранить" />
+                    <asp:Button ID="CancelInsertButton" CommandName="Cancel" runat="server" Text="Отменить" />
                 </InsertItemTemplate>
             </asp:TemplateField>
         </Fields>
@@ -158,24 +144,70 @@
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
         <RowStyle BackColor="#EFF3FB" />
     </asp:DetailsView>
+    <table>
+        <tr>
+            <td>
+                <asp:ListBox ID="AllowedGroups" runat="server" Height="200px" Width="300px" 
+                    DataSourceID="UserAllowedGroupsEDS" DataTextField="NAME" 
+                    DataValueField="ACCESSGROUP_ID"></asp:ListBox>
+            </td>
+            <td valign="top">
+                <asp:Button ID="AddGroupButton" runat="server" Text="&lt;" 
+                    onclick="AddGroupButton_Click" />
+                <br />
+                <br />
+                <asp:Button ID="RemoveGroupButton" runat="server" Text="&gt;" 
+                    onclick="RemoveGroupButton_Click" />
+            </td>
+            <td>
+                <asp:ListBox ID="NotAllowedGroups" runat="server" Height="200px" Width="300px" 
+                    DataSourceID="UserNotAllowedGroupsEDS" DataTextField="NAME" 
+                    DataValueField="ACCESSGROUP_ID"></asp:ListBox>
+            </td>
+        </tr>
+    </table>
     <br />
     <br />
-    <asp:EntityDataSource ID="UsersEDS" runat="server" 
-        ConnectionString="name=SecurityDBEntities" 
-        DefaultContainerName="SecurityDBEntities" EnableDelete="True" 
-        EnableFlattening="False" EnableInsert="True" EnableUpdate="True" 
-        EntitySetName="Users" EntityTypeFilter="Users"
+    <asp:EntityDataSource ID="UsersEDS" runat="server" ConnectionString="name=SecurityDBEntities"
+        DefaultContainerName="SecurityDBEntities" EnableDelete="True" EnableFlattening="False"
+        EnableInsert="True" EnableUpdate="True" EntitySetName="Users" EntityTypeFilter="Users"
         OrderBy="it.[LAST_NAME]">
     </asp:EntityDataSource>
-    <br />
-    <asp:EntityDataSource ID="UsersDetailEDS" runat="server" 
-        ConnectionString="name=SecurityDBEntities" 
-        DefaultContainerName="SecurityDBEntities" EnableFlattening="False" EnableUpdate="True" 
-        EntitySetName="Users"
-        Where="it.[USER_ID] = @parUSER_ID" EntityTypeFilter="Users">
+    <asp:EntityDataSource ID="UsersDetailEDS" runat="server" ConnectionString="name=SecurityDBEntities"
+        DefaultContainerName="SecurityDBEntities" EnableFlattening="False" EnableUpdate="True"
+        EntitySetName="Users" Where="it.[USER_ID] = @parUSER_ID" EntityTypeFilter="Users">
         <WhereParameters>
-            <asp:ControlParameter Name="parUSER_ID" ControlID="UsersEditGridView" 
-                Type="Int32" DefaultValue="0" PropertyName="SelectedValue"/>
+            <asp:ControlParameter Name="parUSER_ID" ControlID="UsersEditGridView" Type="Int32"
+                DefaultValue="0" PropertyName="SelectedValue" />
         </WhereParameters>
     </asp:EntityDataSource>
-    </asp:Content>
+    <asp:EntityDataSource ID="UserAllowedGroupsEDS" runat="server" ConnectionString="name=SecurityDBEntities"
+        DefaultContainerName="SecurityDBEntities" EnableFlattening="False" 
+        CommandText="select
+                       it.[UIAG_ID] as ACCESSGROUP_ID,
+                       g.[NAME] as NAME
+                     from SecurityDBEntities.UsersInAccessGroups as it 
+                     inner join SecurityDBEntities.AccessGroups as g on g.[ACCESSGROUP_ID]=it.[ACCESSGROUP_ID]
+                     where it.[USER_ID] = @parUSER_ID">
+        <CommandParameters>
+            <asp:ControlParameter Name="parUSER_ID" ControlID="UsersEditGridView" Type="Int32"
+                DefaultValue="0" PropertyName="SelectedValue" />
+        </CommandParameters>
+    </asp:EntityDataSource>
+
+    <asp:EntityDataSource ID="UserNotAllowedGroupsEDS" runat="server" ConnectionString="name=SecurityDBEntities"
+        DefaultContainerName="SecurityDBEntities" EnableFlattening="False" 
+        CommandText="select
+                       it.[ACCESSGROUP_ID] as ACCESSGROUP_ID,
+                       it.[NAME] as NAME
+                     from SecurityDBEntities.AccessGroups as it
+                     left join SecurityDBEntities.UsersInAccessGroups as g on g.[USER_ID] = @parUSER_ID and g.[ACCESSGROUP_ID] = it.[ACCESSGROUP_ID]
+                     where g.[UIAG_ID] is null">
+        <CommandParameters>
+            <asp:ControlParameter Name="parUSER_ID" ControlID="UsersEditGridView" Type="Int32"
+                DefaultValue="0" PropertyName="SelectedValue" />
+        </CommandParameters>
+    </asp:EntityDataSource>
+
+    <br />
+</asp:Content>

@@ -31,6 +31,42 @@ namespace NetTelco.NetTelcoAuth {
         protected global::System.Web.UI.WebControls.DetailsView UsersDetailGridView;
         
         /// <summary>
+        /// AllowedGroups элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox AllowedGroups;
+        
+        /// <summary>
+        /// AddGroupButton элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button AddGroupButton;
+        
+        /// <summary>
+        /// RemoveGroupButton элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button RemoveGroupButton;
+        
+        /// <summary>
+        /// NotAllowedGroups элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox NotAllowedGroups;
+        
+        /// <summary>
         /// UsersEDS элемент управления.
         /// </summary>
         /// <remarks>
@@ -47,5 +83,23 @@ namespace NetTelco.NetTelcoAuth {
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.EntityDataSource UsersDetailEDS;
+        
+        /// <summary>
+        /// UserAllowedGroupsEDS элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource UserAllowedGroupsEDS;
+        
+        /// <summary>
+        /// UserNotAllowedGroupsEDS элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.EntityDataSource UserNotAllowedGroupsEDS;
     }
 }

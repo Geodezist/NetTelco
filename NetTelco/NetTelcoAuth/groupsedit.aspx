@@ -47,8 +47,8 @@
     </table>
     <br />
     <asp:GridView ID="AccessGroupsGridView" runat="server" CellPadding="4" DataSourceID="AccessGroupsEDS"
-        ForeColor="#333333" GridLines="None" AllowPaging="True" 
-        AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="ACCESSGROUP_ID">
+        ForeColor="#333333" GridLines="None" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False"
+        DataKeyNames="ACCESSGROUP_ID">
         <AlternatingRowStyle BackColor="White" />
         <Columns>
             <asp:CommandField ShowDeleteButton="True" ShowEditButton="True" />
@@ -60,7 +60,7 @@
         <FooterStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <HeaderStyle BackColor="#507CD1" Font-Bold="True" ForeColor="White" />
         <PagerStyle BackColor="#2461BF" ForeColor="White" HorizontalAlign="Center" />
-        <RowStyle BackColor="#EFF3FB"/>
+        <RowStyle BackColor="#EFF3FB" />
         <SelectedRowStyle BackColor="#D1DDF1" Font-Bold="True" ForeColor="#333333" />
         <SortedAscendingCellStyle BackColor="#F5F7FB" />
         <SortedAscendingHeaderStyle BackColor="#6D95E1" />
@@ -71,4 +71,5 @@
         DefaultContainerName="SecurityDBEntities" EnableFlattening="False" EntitySetName="AccessGroups"
         EnableDelete="True" EnableInsert="True" EnableUpdate="True">
     </asp:EntityDataSource>
+    <br />
 </asp:Content>

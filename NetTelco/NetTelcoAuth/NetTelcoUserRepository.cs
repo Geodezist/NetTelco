@@ -133,9 +133,7 @@ namespace NetTelco.NetTelcoAuth
             }
         }
 
-
-
-
+        
         public bool ValidateUser(string username, string password)
         {
             using (SecurityDBEntities db = new SecurityDBEntities())
@@ -159,7 +157,72 @@ namespace NetTelco.NetTelcoAuth
                 }
             }
         }
-        
+
+
+        /// <summary>
+        /// Добавление пользователю группы.
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="accessgroup_id"></param>
+        /// <returns></returns>
+        public void AddUserInAccessGroup(String user_login, Int64 accessgroup_id)
+        {
+            using (SecurityDBEntities db = new SecurityDBEntities())
+            {
+                long user_id = (from u in db.Users where (u.LOGIN == user_login) select u.USER_ID).First();
+
+                UsersInAccessGroups userinaccessgroup = new UsersInAccessGroups();
+                userinaccessgroup.USER_ID = user_id;
+                userinaccessgroup.ACCESSGROUP_ID = accessgroup_id;
+
+                db.AddToUsersInAccessGroups(userinaccessgroup);
+                db.SaveChanges();
+            }
+
+        }
+
+
+        public void AddUserInAccessGroup(Int64 user_id, Int64 accessgroup_id)
+        {
+            using (SecurityDBEntities db = new SecurityDBEntities())
+            {
+                UsersInAccessGroups userinaccessgroup = new UsersInAccessGroups();
+                userinaccessgroup.USER_ID = user_id;
+                userinaccessgroup.ACCESSGROUP_ID = accessgroup_id;
+
+                db.AddToUsersInAccessGroups(userinaccessgroup);
+                db.SaveChanges();
+            }
+
+        }
+
+
+        /// <summary>
+        /// Удаление у пользователю группы.
+        /// </summary>
+        /// <param name="uiag_id"></param>
+        /// <returns></returns>
+        public bool RemoveUserInAccessGroup(Int64 uiag_id)
+        {
+            try
+            {
+
+                using (SecurityDBEntities db = new SecurityDBEntities())
+                {
+                    UsersInAccessGroups deluaig = (from a in db.UsersInAccessGroups where (a.UIAG_ID == uiag_id) select a).First();
+                    db.UsersInAccessGroups.DeleteObject(deluaig);
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false; // Ошибка пои удалении
+            }
+        }
+
+
         private static string CreateSalt()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
