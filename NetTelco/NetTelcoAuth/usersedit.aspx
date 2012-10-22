@@ -1,6 +1,8 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MainRoot.Master" AutoEventWireup="true"
     CodeBehind="usersedit.aspx.cs" Inherits="NetTelco.NetTelcoAuth.usersedit" %>
 
+<%@ Register assembly="Telerik.Web.UI" namespace="Telerik.Web.UI" tagprefix="telerik" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="MainContent" runat="server">
@@ -209,5 +211,4 @@
         </CommandParameters>
     </asp:EntityDataSource>
 
-    <br />
-</asp:Content>
+    </asp:Content>
