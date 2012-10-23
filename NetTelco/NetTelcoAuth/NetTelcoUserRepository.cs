@@ -96,6 +96,56 @@ namespace NetTelco.NetTelcoAuth
             }
         }
 
+        /// <summary>
+        /// Удаление пользователя по логину
+        /// </summary>
+        /// <param name="user_login"></param>
+        /// <returns></returns>
+        public bool DeleteUser(string user_login)
+        {
+            try
+            {
+
+                using (SecurityDBEntities db = new SecurityDBEntities())
+                {
+                    Users del_user = (from a in db.Users where (a.LOGIN == user_login) select a).First();
+                    db.Users.DeleteObject(del_user);
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false; // Ошибка при удалении
+            }
+        }
+
+
+        /// <summary>
+        /// Удаление пользователя по USER_ID
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <returns></returns>
+        public bool DeleteUser(Int64 user_id)
+        {
+            try
+            {
+
+                using (SecurityDBEntities db = new SecurityDBEntities())
+                {
+                    Users del_user = (from a in db.Users where (a.USER_ID == user_id) select a).First();
+                    db.Users.DeleteObject(del_user);
+                    db.SaveChanges();
+
+                    return true;
+                }
+            }
+            catch (Exception ex)
+            {
+                return false; // Ошибка при удалении
+            }
+        }
 
         /// <summary>
         /// Проверка, доступна ли страница requested_page для пользователя user_login.
@@ -160,9 +210,10 @@ namespace NetTelco.NetTelcoAuth
 
 
         /// <summary>
-        /// Добавление пользователю группы.
+        /// Добавление пользователю группы по логину пользователя
+        /// и по ACCESSGROUP_ID группы
         /// </summary>
-        /// <param name="user_id"></param>
+        /// <param name="user_login"></param>
         /// <param name="accessgroup_id"></param>
         /// <returns></returns>
         public void AddUserInAccessGroup(String user_login, Int64 accessgroup_id)
@@ -181,7 +232,13 @@ namespace NetTelco.NetTelcoAuth
 
         }
 
-
+        /// <summary>
+        /// Добавление пользователю группы по USER_ID пользователя
+        /// и по ACCESSGROUP_ID группы
+        /// </summary>
+        /// <param name="user_id"></param>
+        /// <param name="accessgroup_id"></param>
+        /// <returns></returns>
         public void AddUserInAccessGroup(Int64 user_id, Int64 accessgroup_id)
         {
             using (SecurityDBEntities db = new SecurityDBEntities())

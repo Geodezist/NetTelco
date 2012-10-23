@@ -35,7 +35,7 @@
 
     <telerik:RadGrid ID="UsersEditGridView" runat="server" CellSpacing="0" Culture="ru-RU"
         DataSourceID="UsersEDS" GridLines="None" AllowPaging="True" AllowSorting="True"
-        GroupingEnabled="False">
+        GroupingEnabled="False" OnDeleteCommand="DeleteUser">
         <ClientSettings EnablePostBackOnRowClick="true">
             <Selecting AllowRowSelect="True" CellSelectionMode="SingleCell" EnableDragToSelectRows="False" />
             <Scrolling AllowScroll="true" UseStaticHeaders="true"></Scrolling>
@@ -49,8 +49,11 @@
                 <HeaderStyle Width="20px"></HeaderStyle>
             </ExpandCollapseColumn>
             <Columns>
+                <telerik:GridButtonColumn ConfirmText="Ай ай ай!,Точно удалять пользователя?" ConfirmDialogType="RadWindow" ConfirmTitle="Внимание УДАЛЕНИЕ!" ConfirmDialogHeight="100px" ConfirmDialogWidth="220px"
+                    CommandName="Delete" Text="X" UniqueName="column" >
+                </telerik:GridButtonColumn>
                 <telerik:GridBoundColumn DataField="USER_ID" DataType="System.Int64" FilterControlAltText="Filter USER_ID column"
-                    HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" UniqueName="USER_ID">
+                    HeaderText="USER_ID" ReadOnly="True" SortExpression="USER_ID" UniqueName="USER_ID" Visible="false">
                 </telerik:GridBoundColumn>
                 <telerik:GridBoundColumn DataField="FIRST_NAME" FilterControlAltText="Filter FIRST_NAME column"
                     HeaderText="FIRST_NAME" SortExpression="FIRST_NAME" UniqueName="FIRST_NAME">
@@ -136,20 +139,6 @@
         </tr>
     </table>
 
-<%--    <telerik:RadListBox runat="server" ID="RadListBox1" AutoPostBack="True" Width="200px"
-        Height="200px" OnSelectedIndexChanged="RadListBox1_SelectedIndexChanged" OnDeleted="RadListBox1_Deleted"
-        OnDeleting="RadListBox1_Deleting" OnInserted="RadListBox1_Inserted" OnInserting="RadListBox1_Inserting"
-        OnTransferred="RadListBox1_Transferred" OnTransferring="RadListBox1_Transferring"
-        TransferToID="RadListBox2" AllowTransfer="true" AutoPostBackOnTransfer="true"
-        SelectionMode="Multiple">
-    </telerik:RadListBox>
-    <telerik:RadListBox runat="server" ID="RadListBox2" AllowReorder="true" AllowDelete="true"
-        OnDeleted="RadListBox2_Deleted" OnDeleting="RadListBox2_Deleting" OnReordered="RadListBox2_Reordered"
-        OnReordering="RadListBox2_Reordering" AutoPostBackOnDelete="true" AutoPostBackOnReorder="true"
-        OnInserted="RadListBox2_Inserted" OnInserting="RadListBox2_Inserting" SelectionMode="Multiple"
-        Width="200px" Height="200px">
-    </telerik:RadListBox>
---%>
 
     <asp:EntityDataSource ID="UsersEDS" runat="server" ConnectionString="name=SecurityDBEntities"
         DefaultContainerName="SecurityDBEntities" EnableFlattening="False" EntitySetName="Users">
@@ -185,5 +174,8 @@
     <br />
     <br />
     <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+
+    <telerik:RadWindowManager ID="RadWindowManager1" runat="server">
+    </telerik:RadWindowManager>
 
 </asp:Content>
